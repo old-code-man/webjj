@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>词元Web - 排行榜</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-title">词元Web</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">总览</a>
+                <a href="ranking.html" class="nav-link active">排行榜</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="container">
+        <h1 class="page-title">词元排行榜</h1>
+
+        <!-- 榜单网格容器 -->
+        <div class="ranking-grid">
+            <!-- 榜单1：Code Models -->
+            <iframe src="rankings/code.html" class="ranking-frame" frameborder="0"></iframe>
+
+            <!-- 榜单2：Text Models -->
+            <iframe src="rankings/text.html" class="ranking-frame" frameborder="0"></iframe>
+
+            <!-- 榜单3：Image to Video -->
+            <iframe src="rankings/image-to-video.html" class="ranking-frame" frameborder="0"></iframe>
+
+            <!-- 榜单4：Text to Video -->
+            <iframe src="rankings/text-to-video.html" class="ranking-frame" frameborder="0"></iframe>
+
+            <!-- 榜单5：Image Edit -->
+            <iframe src="rankings/image-edit.html" class="ranking-frame" frameborder="0"></iframe>
+
+            <!-- 榜单6：Text to Image -->
+            <iframe src="rankings/txttoimage.html" class="ranking-frame" frameborder="0"></iframe>
+        </div>
+    </main>
+
+    <!-- 底部 -->
+    <footer class="footer">
+        <p>&copy; 2026 词元Web. 保留所有权利.</p>
+    </footer>
+
+    <script>
+        // 自动调整iframe高度
+        window.addEventListener('message', function(e) {
+            if (e.data.type === 'resize') {
+                const frames = document.querySelectorAll('.ranking-frame');
+                frames.forEach(frame => {
+                    if (frame.contentWindow === e.source) {
+                        frame.style.height = e.data.height + 'px';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

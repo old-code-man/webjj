@@ -1,0 +1,456 @@
+/* 榜单卡片专用样式 - 表格版本 */
+:root {
+    --primary-color: #007AFF;
+    --secondary-color: #5856D6;
+    --success-color: #34C759;
+    --background: #F2F2F7;
+    --surface: #FFFFFF;
+    --text-primary: #000000;
+    --text-secondary: #8E8E93;
+    --border-color: #E5E5EA;
+    --shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: transparent;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    padding: 8px;
+}
+
+/* 榜单卡片容器 - 宽度自适应，让表格完整展示 */
+.ranking-card {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* 榜单头部 */
+.ranking-card-header {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.ranking-card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.ranking-card-icon {
+    font-size: 20px;
+}
+
+/* 头部筛选按钮 */
+.ranking-card-filters {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.filter-tag {
+    padding: 4px 12px;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-family);
+    backdrop-filter: blur(10px);
+}
+
+.filter-tag:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.filter-tag.active {
+    background: white;
+    color: var(--primary-color);
+    border-color: white;
+    font-weight: 600;
+}
+
+/* 表格容器 */
+.ranking-table-wrapper {
+    overflow-y: auto;
+    max-height: 520px;
+}
+
+/* 自定义滚动条 */
+.ranking-table-wrapper::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.ranking-table-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ranking-table-wrapper::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.ranking-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* 表格样式 */
+.ranking-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+}
+
+/* 表头 */
+.ranking-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--background);
+}
+
+.ranking-table thead th {
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--border-color);
+    background: var(--background);
+}
+
+/* 列宽设置 */
+.col-rank {
+    width: 70px;
+    text-align: center !important;
+}
+
+.col-name {
+    min-width: 240px; /* 增加名称列宽度 */
+}
+
+.col-score {
+    width: 110px; /* 增加评分列宽度 */
+    text-align: center !important;
+}
+
+.col-usage {
+    width: 120px; /* 增加使用量列宽度 */
+    text-align: right !important;
+}
+
+.col-trend {
+    width: 110px; /* 增加趋势列宽度 */
+    text-align: center !important;
+}
+
+/* 表格行 */
+.rank-row {
+    transition: all 0.2s ease;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.rank-row.hidden {
+    display: none;
+}
+
+.rank-row:hover {
+    background: rgba(0, 122, 255, 0.04);
+}
+
+.rank-row td {
+    padding: 10px 12px;
+    vertical-align: middle;
+}
+
+/* 可折叠行 */
+.rank-row.collapsible {
+    cursor: pointer;
+    user-select: none;
+}
+
+.rank-row.collapsible:hover {
+    background: rgba(0, 122, 255, 0.08);
+}
+
+/* 子行（被收纳的行） */
+.rank-row.sub-row {
+    display: none;
+    background: rgba(0, 122, 255, 0.02);
+}
+
+.rank-row.collapsible.expanded + .sub-row,
+.rank-row.sub-row.show {
+    display: table-row;
+}
+
+/* 显示所有同parent的子行 */
+.rank-row.collapsible.expanded ~ .sub-row {
+    display: table-row;
+}
+
+/* 但只显示紧邻的同parent子行 */
+.rank-row.sub-row + .rank-row:not(.sub-row) {
+    /* 新的主行，停止显示子行 */
+}
+
+/* 排名徽章 */
+.rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    background: var(--surface);
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.rank-badge.gold {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: white;
+}
+
+.rank-badge.silver {
+    background: linear-gradient(135deg, #C0C0C0, #999999);
+    color: white;
+}
+
+.rank-badge.bronze {
+    background: linear-gradient(135deg, #CD7F32, #8B4513);
+    color: white;
+}
+
+.rank-badge.sub {
+    min-width: 24px;
+    height: 24px;
+    font-size: 11px;
+    background: var(--background);
+    color: var(--text-secondary);
+    box-shadow: none;
+}
+
+/* 模型名称 */
+.col-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.model-name {
+    font-weight: 600;
+}
+
+/* 展开图标 */
+.expand-icon {
+    display: inline-block;
+    font-size: 10px;
+    margin-right: 6px;
+    color: var(--text-secondary);
+    transition: transform 0.3s ease;
+}
+
+.rank-row.collapsible.expanded .expand-icon {
+    transform: rotate(90deg);
+}
+
+/* 系列数量标记 */
+.series-count {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 6px;
+    background: rgba(0, 122, 255, 0.15);
+    color: var(--primary-color);
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* 子项缩进 */
+.sub-name {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.sub-indent {
+    display: inline-block;
+    margin-right: 4px;
+    color: var(--border-color);
+    font-weight: 400;
+}
+
+/* 评分 */
+.col-score {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* 使用量 */
+.col-usage {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* 趋势 */
+.trend-up {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(52, 199, 89, 0.15);
+    color: var(--success-color);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.trend-down {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(255, 59, 48, 0.15);
+    color: #FF3B30;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.trend-stable {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(142, 142, 147, 0.15);
+    color: var(--text-secondary);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* 空状态 */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.empty-state-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .ranking-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .ranking-table {
+        font-size: 12px;
+    }
+
+    .ranking-table thead th {
+        padding: 8px 6px;
+        font-size: 10px;
+    }
+
+    .rank-row td {
+        padding: 8px 6px;
+    }
+
+    .col-rank {
+        width: 50px;
+    }
+
+    .col-name {
+        min-width: 140px;
+    }
+
+    .col-score,
+    .col-usage,
+    .col-trend {
+        width: 70px;
+    }
+
+    .rank-badge {
+        min-width: 24px;
+        height: 24px;
+        font-size: 11px;
+    }
+}
+
+/* 网格布局（用于主页面） */
+.ranking-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.ranking-frame {
+    width: 100%;
+    min-height: 600px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+@media (max-width: 1200px) {
+    .ranking-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .ranking-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Loading状态 */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
