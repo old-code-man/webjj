@@ -5,6 +5,7 @@ const path = require('path');
 const CSV_DIR = './csv';
 const JS_DIR = './js';
 const RANK_DIFF_THRESHOLD = 10; // rank差异阈值
+const RERANK_AFTER_FILTER = false; // 筛选后是否重新排名，默认false保持原始排名
 
 // 确保输出目录存在
 if (!fs.existsSync(JS_DIR)) {
@@ -246,6 +247,7 @@ function convertCSVToJS(csvFilePath) {
 window.rankingData = {
     title: "${title}",
     icon: "${icon}",
+    rerankAfterFilter: ${RERANK_AFTER_FILTER}, // 筛选后是否重新排名
     data: ${JSON.stringify(processedData, null, 8).replace(/"([^"]+)":/g, '$1:')}
 };
 `;

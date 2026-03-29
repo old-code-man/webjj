@@ -2,6 +2,7 @@
 window.rankingData = {
     title: "Code Models",
     icon: "💻",
+    rerankAfterFilter: false, // 筛选后是否重新排名
     data: [
         {
                 rank: 1,

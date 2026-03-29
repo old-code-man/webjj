@@ -23,11 +23,19 @@ function renderTable(data, filterType = 'all') {
         filteredData = data.filter(item => item.region === filterType);
     }
 
-    // 重新计算排名
+    // 检查是否需要重新排名（从 window.rankingData 获取设置）
+    const shouldRerank = window.rankingData && window.rankingData.rerankAfterFilter !== false;
+
+    // 重新计算排名或使用原始排名
     let newRank = 1;
     filteredData.forEach(item => {
-        item.displayRank = newRank;
-        newRank++;
+        if (shouldRerank) {
+            item.displayRank = newRank;
+            newRank++;
+        } else {
+            // 使用原始 rank 字段
+            item.displayRank = item.rank;
+        }
 
         if (item.children) {
             // 如果有筛选，也要筛选 children
@@ -39,8 +47,13 @@ function renderTable(data, filterType = 'all') {
             }
 
             filteredChildren.forEach(child => {
-                child.displayRank = newRank;
-                newRank++;
+                if (shouldRerank) {
+                    child.displayRank = newRank;
+                    newRank++;
+                } else {
+                    // 使用原始 rank 字段
+                    child.displayRank = child.rank;
+                }
             });
 
             // 如果筛选后没有 children，移除 collapsible 标记
