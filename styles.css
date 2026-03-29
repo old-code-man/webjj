@@ -135,7 +135,7 @@ body {
 
 .ranking-frame {
     width: 100%;
-    min-width: 400px; /* 设置最小宽度确保表格完整显示 */
+    min-width: 350px; /* 设置最小宽度确保表格完整显示 */
     min-height: 600px;
     border: none;
     border-radius: var(--radius-md);
