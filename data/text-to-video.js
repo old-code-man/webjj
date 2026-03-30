@@ -54,8 +54,8 @@ window.rankingData = {
         },
         {
                 rank: 6,
-                model: "grok-imagine-video-720px",
-                company: "AI",
+                model: "grok-imagine-video-720p",
+                company: "xAI",
                 score: 1358,
                 isChinese: false
         },
@@ -106,7 +106,7 @@ window.rankingData = {
         },
         {
                 rank: 13,
-                model: "Bytedanceseedance-v1.5-pro",
+                model: "seedance-v1.5-pro",
                 company: "Bytedance",
                 score: 1255,
                 isChinese: true
@@ -134,7 +134,7 @@ window.rankingData = {
         },
         {
                 rank: 18,
-                model: "Runwayrunway-gen-4.5",
+                model: "runway-gen-4.5",
                 company: "Runway",
                 score: 1214,
                 isChinese: false
@@ -148,14 +148,14 @@ window.rankingData = {
         },
         {
                 rank: 20,
-                model: "Lumaray-3",
+                model: "ray-3",
                 company: "Luma AI",
                 score: 1204,
                 isChinese: false
         },
         {
                 rank: 21,
-                model: "Minimaxhailuo-02-pro",
+                model: "hailuo-02-pro",
                 company: "MiniMax",
                 score: 1200,
                 isChinese: true,
@@ -163,7 +163,7 @@ window.rankingData = {
                 children: [
                         {
                                 rank: 24,
-                                model: "Minimaxhailuo-02-standard",
+                                model: "hailuo-02-standard",
                                 company: "MiniMax",
                                 score: 1181,
                                 isChinese: true
@@ -172,14 +172,14 @@ window.rankingData = {
         },
         {
                 rank: 22,
-                model: "Minimaxhailuo-2.3",
+                model: "hailuo-2.3",
                 company: "MiniMax",
                 score: 1196,
                 isChinese: true
         },
         {
                 rank: 23,
-                model: "Bytedanceseedance-v1-pro",
+                model: "seedance-v1-pro",
                 company: "Bytedance",
                 score: 1192,
                 isChinese: true,
@@ -187,7 +187,7 @@ window.rankingData = {
                 children: [
                         {
                                 rank: 32,
-                                model: "Bytedanceseedance-v1-lite",
+                                model: "seedance-v1-lite",
                                 company: "Bytedance",
                                 score: 1114,
                                 isChinese: true
@@ -220,7 +220,7 @@ window.rankingData = {
         },
         {
                 rank: 27,
-                model: "Tencenthunyuan-video-1.5",
+                model: "hunyuan-video-1.5",
                 company: "Tencent",
                 score: 1171,
                 isChinese: true
@@ -248,8 +248,8 @@ window.rankingData = {
         },
         {
                 rank: 31,
-                model: "Lightricksltx-2-19blightricks · ltx-2-community-license-agreement",
-                company: "Unknown",
+                model: "ltx-2-19b",
+                company: "lightricks",
                 score: 1122,
                 isChinese: false
         },
@@ -262,14 +262,14 @@ window.rankingData = {
         },
         {
                 rank: 35,
-                model: "Lumaray2",
+                model: "ray2",
                 company: "Luma AI",
                 score: 1066,
                 isChinese: false
         },
         {
                 rank: 36,
-                model: "Pikapika-v2.2",
+                model: "pika-v2.2",
                 company: "Pika",
                 score: 1011,
                 isChinese: false

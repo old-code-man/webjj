@@ -41,23 +41,23 @@ window.rankingData = {
         },
         {
                 rank: 6,
-                model: "grok-imagine-imagex",
-                company: "AI",
+                model: "grok-imagine-image",
+                company: "xAI",
                 score: 1338,
                 isChinese: false
         },
         {
                 rank: 7,
-                model: "grok-imagine-image-pro (20260207)x",
-                company: "AI",
+                model: "grok-imagine-image-pro (20260207)",
+                company: "xAI",
                 score: 1320,
                 isChinese: false,
                 collapsible: true,
                 children: [
                         {
                                 rank: 8,
-                                model: "grok-imagine-image (20260207)x",
-                                company: "AI",
+                                model: "grok-imagine-image (20260207)",
+                                company: "xAI",
                                 score: 1314,
                                 isChinese: false
                         }
@@ -65,14 +65,14 @@ window.rankingData = {
         },
         {
                 rank: 9,
-                model: "Bytedanceseedream-4.5",
+                model: "seedream-4.5",
                 company: "Bytedance",
                 score: 1307,
                 isChinese: true
         },
         {
                 rank: 10,
-                model: "Tencenthunyuan-image-3.0-instruct",
+                model: "hunyuan-image-3.0-instruct",
                 company: "Tencent",
                 score: 1307,
                 isChinese: true
@@ -86,21 +86,21 @@ window.rankingData = {
         },
         {
                 rank: 12,
-                model: "Bytedanceseedream-5.0-lite",
+                model: "seedream-5.0-lite",
                 company: "Bytedance",
                 score: 1300,
                 isChinese: true
         },
         {
                 rank: 13,
-                model: "Bytedanceseedream-4-2k",
+                model: "seedream-4-2k",
                 company: "Bytedance",
                 score: 1276,
                 isChinese: true
         },
         {
                 rank: 14,
-                model: "Fluxflux-2-max",
+                model: "flux-2-max",
                 company: "Black Forest Labs",
                 score: 1263,
                 isChinese: false
@@ -114,7 +114,7 @@ window.rankingData = {
         },
         {
                 rank: 16,
-                model: "Fluxflux-2-pro",
+                model: "flux-2-pro",
                 company: "Black Forest Labs",
                 score: 1244,
                 isChinese: false
@@ -142,14 +142,14 @@ window.rankingData = {
         },
         {
                 rank: 20,
-                model: "Bytedanceseedream-4-high-res-fal",
+                model: "seedream-4-high-res-fal",
                 company: "Bytedance",
                 score: 1230,
                 isChinese: true
         },
         {
                 rank: 21,
-                model: "Fluxflux-2-flex",
+                model: "flux-2-flex",
                 company: "Black Forest Labs",
                 score: 1230,
                 isChinese: false
@@ -163,21 +163,21 @@ window.rankingData = {
         },
         {
                 rank: 23,
-                model: "Fluxflux-2-dev",
+                model: "flux-2-dev",
                 company: "Black Forest Labs",
                 score: 1227,
                 isChinese: false
         },
         {
                 rank: 24,
-                model: "Fluxflux-2-klein-9b",
+                model: "flux-2-klein-9b",
                 company: "Black Forest Labs",
                 score: 1226,
                 isChinese: false
         },
         {
                 rank: 25,
-                model: "Bytedanceseedream-4-fal",
+                model: "seedream-4-fal",
                 company: "Bytedance",
                 score: 1215,
                 isChinese: true
@@ -205,7 +205,7 @@ window.rankingData = {
         },
         {
                 rank: 29,
-                model: "Fluxflux-2-klein-4b",
+                model: "flux-2-klein-4b",
                 company: "Black Forest Labs",
                 score: 1189,
                 isChinese: false
@@ -219,28 +219,28 @@ window.rankingData = {
         },
         {
                 rank: 31,
-                model: "Fluxflux-1-kontext-max",
+                model: "flux-1-kontext-max",
                 company: "Black Forest Labs",
                 score: 1186,
                 isChinese: false
         },
         {
                 rank: 32,
-                model: "Fluxflux-1-kontext-pro",
+                model: "flux-1-kontext-pro",
                 company: "Black Forest Labs",
                 score: 1180,
                 isChinese: false
         },
         {
                 rank: 33,
-                model: "Fluxflux-1-kontext-dev",
+                model: "flux-1-kontext-dev",
                 company: "Black Forest Labs",
                 score: 1154,
                 isChinese: false
         },
         {
                 rank: 34,
-                model: "Bytedanceseededit-3.0",
+                model: "seededit-3.0",
                 company: "Bytedance",
                 score: 1144,
                 isChinese: true
@@ -268,14 +268,14 @@ window.rankingData = {
         },
         {
                 rank: 38,
-                model: "Bytedancebagel",
+                model: "bagel",
                 company: "Bytedance",
                 score: 1030,
                 isChinese: true
         },
         {
                 rank: 39,
-                model: "Stepfunstep1x-edit",
+                model: "step1x-edit",
                 company: "StepFun",
                 score: 1003,
                 isChinese: true

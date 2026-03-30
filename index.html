@@ -20,7 +20,7 @@
 
     <!-- 主内容区 -->
     <main class="container">
-        <h1 class="page-title">词元排行榜<span class="update-date">(更新于2026-03-28)</span></h1>
+        <h1 class="page-title">词元排行榜<span class="update-date" id="update-date">(更新于2026-03-28)</span></h1>
 
         <!-- 榜单网格容器 -->
         <div class="ranking-grid">
@@ -40,9 +40,20 @@
             <iframe src="rankings/image-edit.html" class="ranking-frame" frameborder="0"></iframe>
 
             <!-- 榜单6：Text to Image -->
-            <iframe src="rankings/txttoimage.html" class="ranking-frame" frameborder="0"></iframe>
+            <iframe src="rankings/text-to-image.html" class="ranking-frame" frameborder="0"></iframe>
         </div>
     </main>
+
+    <script src="data/update.js"></script>
+    <script>
+        // 动态填充更新时间
+        (function () {
+            var el = document.getElementById('update-date');
+            if (el && window.lastUpdated) {
+                el.textContent = '(更新于' + window.lastUpdated + ')';
+            }
+        })();
+    </script>
 
     <script>
         // 自动调整iframe高度

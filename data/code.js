@@ -6,7 +6,7 @@ window.rankingData = {
     data: [
         {
                 rank: 1,
-                model: "Anthropicclaude-opus-4-6",
+                model: "claude-opus-4-6",
                 company: "Anthropic",
                 score: 1549,
                 isChinese: false,
@@ -14,14 +14,14 @@ window.rankingData = {
                 children: [
                         {
                                 rank: 2,
-                                model: "Anthropicclaude-opus-4-6-thinking",
+                                model: "claude-opus-4-6-thinking",
                                 company: "Anthropic",
                                 score: 1545,
                                 isChinese: false
                         },
                         {
                                 rank: 3,
-                                model: "Anthropicclaude-sonnet-4-6",
+                                model: "claude-sonnet-4-6",
                                 company: "Anthropic",
                                 score: 1523,
                                 isChinese: false
@@ -30,14 +30,14 @@ window.rankingData = {
         },
         {
                 rank: 4,
-                model: "Anthropicclaude-opus-4-5-20251101-thinking-32k",
+                model: "claude-opus-4-5-20251101-thinking-32k",
                 company: "Anthropic",
                 score: 1491,
                 isChinese: false
         },
         {
                 rank: 5,
-                model: "Anthropicclaude-opus-4-5-20251101",
+                model: "claude-opus-4-5-20251101",
                 company: "Anthropic",
                 score: 1465,
                 isChinese: false
@@ -58,15 +58,15 @@ window.rankingData = {
         },
         {
                 rank: 8,
-                model: "glm-5Z.ai · MIT",
-                company: "Unknown",
+                model: "glm-5",
+                company: "Z.ai",
                 score: 1445,
                 isChinese: false
         },
         {
                 rank: 9,
-                model: "glm-4.7Z.ai · MIT",
-                company: "Unknown",
+                model: "glm-4.7",
+                company: "Z.ai",
                 score: 1439,
                 isChinese: false
         },
@@ -96,14 +96,14 @@ window.rankingData = {
         },
         {
                 rank: 13,
-                model: "Minimaxminimax-m2.7",
+                model: "minimax-m2.7",
                 company: "MiniMax",
                 score: 1435,
                 isChinese: true
         },
         {
                 rank: 14,
-                model: "MoonshotAIkimi-k2.5-thinking",
+                model: "kimi-k2.5-thinking",
                 company: "Moonshot",
                 score: 1430,
                 isChinese: true
@@ -117,7 +117,7 @@ window.rankingData = {
         },
         {
                 rank: 16,
-                model: "MoonshotAIkimi-k2.5-instant",
+                model: "kimi-k2.5-instant",
                 company: "Moonshot",
                 score: 1408,
                 isChinese: true
@@ -131,7 +131,7 @@ window.rankingData = {
         },
         {
                 rank: 18,
-                model: "Minimaxminimax-m2.5",
+                model: "minimax-m2.5",
                 company: "MiniMax",
                 score: 1403,
                 isChinese: true
@@ -152,7 +152,7 @@ window.rankingData = {
         },
         {
                 rank: 21,
-                model: "Minimaxminimax-m2.1-preview",
+                model: "minimax-m2.1-preview",
                 company: "MiniMax",
                 score: 1392,
                 isChinese: true
@@ -173,7 +173,7 @@ window.rankingData = {
         },
         {
                 rank: 24,
-                model: "Anthropicclaude-sonnet-4-5-20250929-thinking-32k",
+                model: "claude-sonnet-4-5-20250929-thinking-32k",
                 company: "Anthropic",
                 score: 1389,
                 isChinese: false
@@ -187,22 +187,22 @@ window.rankingData = {
         },
         {
                 rank: 26,
-                model: "Anthropicclaude-sonnet-4-5-20250929",
+                model: "claude-sonnet-4-5-20250929",
                 company: "Anthropic",
                 score: 1386,
                 isChinese: false
         },
         {
                 rank: 27,
-                model: "Anthropicclaude-opus-4-1-20250805",
+                model: "claude-opus-4-1-20250805",
                 company: "Anthropic",
                 score: 1384,
                 isChinese: false
         },
         {
                 rank: 28,
-                model: "grok-4.20-beta-0309-reasoningx",
-                company: "AI",
+                model: "grok-4.20-beta-0309-reasoning",
+                company: "xAI",
                 score: 1378,
                 isChinese: false
         },
@@ -232,8 +232,8 @@ window.rankingData = {
         },
         {
                 rank: 31,
-                model: "glm-4.6Z.ai · MIT",
-                company: "Unknown",
+                model: "glm-4.6",
+                company: "Z.ai",
                 score: 1353,
                 isChinese: false
         },
@@ -267,7 +267,7 @@ window.rankingData = {
         },
         {
                 rank: 36,
-                model: "MoonshotAIkimi-k2-thinking-turbo",
+                model: "kimi-k2-thinking-turbo",
                 company: "Moonshot",
                 score: 1328,
                 isChinese: true
@@ -281,14 +281,14 @@ window.rankingData = {
         },
         {
                 rank: 39,
-                model: "Anthropicclaude-haiku-4-5-20251001",
+                model: "claude-haiku-4-5-20251001",
                 company: "Anthropic",
                 score: 1309,
                 isChinese: false
         },
         {
                 rank: 40,
-                model: "Minimaxminimax-m2",
+                model: "minimax-m2",
                 company: "MiniMax",
                 score: 1303,
                 isChinese: true
@@ -316,7 +316,7 @@ window.rankingData = {
         },
         {
                 rank: 44,
-                model: "KwaiKAT-Coder-Pro-V1",
+                model: "KAT-Coder-Pro-V1",
                 company: "KwaiKAT",
                 score: 1257,
                 isChinese: true
@@ -351,8 +351,8 @@ window.rankingData = {
         },
         {
                 rank: 49,
-                model: "grok-4-1-fast-reasoningx",
-                company: "AI",
+                model: "grok-4-1-fast-reasoning",
+                company: "xAI",
                 score: 1233,
                 isChinese: false
         },
@@ -365,8 +365,8 @@ window.rankingData = {
         },
         {
                 rank: 51,
-                model: "grok-4.1-thinkingx",
-                company: "AI",
+                model: "grok-4.1-thinking",
+                company: "xAI",
                 score: 1206,
                 isChinese: false
         },
@@ -393,15 +393,15 @@ window.rankingData = {
         },
         {
                 rank: 55,
-                model: "grok-4-fast-reasoningx",
-                company: "AI",
+                model: "grok-4-fast-reasoning",
+                company: "xAI",
                 score: 1147,
                 isChinese: false
         },
         {
                 rank: 56,
-                model: "grok-code-fast-1x",
-                company: "AI",
+                model: "grok-code-fast-1",
+                company: "xAI",
                 score: 1138,
                 isChinese: false
         },
