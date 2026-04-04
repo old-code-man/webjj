@@ -2,11 +2,113 @@ const fs = require('fs');
 const path = require('path');
 
 // 配置（基于 __dirname = f:\upinfo\webjj\claw）
-const JSON_DIR = './api_data';    // f:\upinfo\webjj\claw\api_data
-const JS_DIR = '../data';         // f:\upinfo\webjj\data
-const DATA_DIR = '../data';       // f:\upinfo\webjj\data
+const JSON_DIR = path.join(__dirname, 'api_data');    // f:\upinfo\webjj\claw\api_data
+const JS_DIR = path.join(__dirname, '..', 'data');         // f:\upinfo\webjj\data
+const DATA_DIR = path.join(__dirname, '..', 'data');       // f:\upinfo\webjj\data
+const LOGO_DIR = path.join(__dirname, '..', 'assets', 'logos');  // 商标素材目录
 const RANK_DIFF_THRESHOLD = 10; // rank差异阈值
 const RERANK_AFTER_FILTER = false; // 筛选后是否重新排名，默认false保持原始排名
+
+// 公司商标映射表（公司名 -> logo文件名）
+// 将根据实际素材文件自动匹配，未找到的则为空
+const COMPANY_LOGO_MAP = {
+    // 国外公司
+    'Anthropic': 'anthropic.svg',
+    'OpenAI': 'openai.svg',
+    'Google': 'google.svg',
+    'Meta': 'meta.svg',
+    'Microsoft': 'microsoft.svg',
+    'xAI': 'xai.svg',
+    'Mistral': 'mistral.svg',
+    'Cohere': 'cohere.svg',
+    'Stability': 'stability.svg',
+    'Midjourney': 'midjourney.svg',
+    'Runway': 'runway.svg',
+    'Pika': 'pika.svg',
+    'Luma': 'luma.svg',
+    'Sora': 'sora.svg',
+    // 中国公司
+    'Alibaba': 'alibaba.svg',
+    'Tencent': 'tencent.svg',
+    'Baidu': 'baidu.svg',
+    'ByteDance': 'bytedance.svg',
+    'Bytedance': 'bytedance.svg',
+    'KlingAI': 'kling.svg',
+    'Kling': 'kling.svg',
+    'Shengshu': 'shengshu.svg',
+    'MiniMax': 'minimax.svg',
+    'Minimax': 'minimax.svg',
+    'Zhipu': 'zhipu.svg',
+    'DeepSeek': 'deepseek.svg',
+    'Moonshot': 'moonshot.svg',
+    'MoonshotAI': 'moonshot.svg',
+    'StepFun': 'stepfun.svg',
+    '01.AI': '01ai.svg',
+    'Lingyiwanwu': '01ai.svg',
+    'SenseTime': 'sensetime.svg',
+    'iFLYTEK': 'iflytek.svg',
+    'THUDM': 'thudm.svg',
+    'ModelBest': 'modelbest.svg',
+    'SenseTime': 'sensetime.svg',
+    'iFLYTEK': 'iflytek.svg',
+    'THUDM': 'thudm.svg',
+    'Xiaomi': 'xiaomi.svg',
+    'Kwai': 'kwai.svg',
+    'KwaiKAT': 'kwai.svg',
+    'Huawei': 'huawei.svg',
+    'Z.ai': 'zhipu.svg',
+    'Pruna': 'pruna.svg'
+};
+
+// 缓存已确认存在的logo文件
+const existingLogos = new Set();
+
+// 初始化：检查logo目录并缓存存在的文件
+function initLogoCache() {
+    if (fs.existsSync(LOGO_DIR)) {
+        const files = fs.readdirSync(LOGO_DIR);
+        files.forEach(file => {
+            existingLogos.add(file.toLowerCase());
+        });
+    }
+}
+
+// 获取公司logo路径
+function getCompanyLogo(company) {
+    if (!company) return '';
+
+    // 直接匹配
+    const logoFile = COMPANY_LOGO_MAP[company];
+    if (logoFile && existingLogos.has(logoFile.toLowerCase())) {
+        return `./assets/logos/${logoFile}`;
+    }
+
+    // 模糊匹配：尝试在公司名中查找
+    for (const [companyName, logo] of Object.entries(COMPANY_LOGO_MAP)) {
+        if (company.toLowerCase().includes(companyName.toLowerCase()) ||
+            companyName.toLowerCase().includes(company.toLowerCase())) {
+            if (existingLogos.has(logo.toLowerCase())) {
+                return `./assets/logos/${logo}`;
+            }
+        }
+    }
+
+    // 尝试根据公司名自动查找文件
+    const normalizedName = company.toLowerCase()
+        .replace(/[^a-z0-9]/g, '')
+        .replace(/\s+/g, '');
+    const extensions = ['.svg', '.png', '.jpg', '.jpeg', '.webp'];
+
+    for (const ext of extensions) {
+        const fileName = normalizedName + ext;
+        if (existingLogos.has(fileName.toLowerCase())) {
+            return `./assets/logos/${fileName}`;
+        }
+    }
+
+    // 未找到logo
+    return '';
+}
 
 // 确保输出目录存在
 if (!fs.existsSync(JS_DIR)) {
@@ -21,7 +123,7 @@ function isChineseCompany(vendor) {
         'Zhipu', 'DeepSeek', 'Moonshot', 'StepFun',
         '01.AI', 'Lingyiwanwu', 'SenseTime', 'iFLYTEK',
         'THUDM', 'ModelBest', 'Pruna', 'Xiaomi',
-        'KwaiKAT', 'Kwai', 'MoonshotAI', 'Huawei'
+        'KwaiKAT', 'Kwai', 'MoonshotAI', 'Huawei', 'Z.ai'
     ];
     return chineseCompanies.some(cn =>
         vendor.toLowerCase().includes(cn.toLowerCase())
@@ -80,6 +182,7 @@ function processChildren(items) {
                     rank: item.rank,
                     model: item.model,
                     company: item.company,
+                    logo: item.logo,
                     score: item.score,
                     isChinese: item.isChinese
                 });
@@ -98,6 +201,7 @@ function processChildren(items) {
                         rank: child.rank,
                         model: child.model,
                         company: child.company,
+                        logo: child.logo,
                         score: child.score,
                         isChinese: child.isChinese
                     });
@@ -110,6 +214,7 @@ function processChildren(items) {
                     rank: parent.rank,
                     model: parent.model,
                     company: parent.company,
+                    logo: parent.logo,
                     score: parent.score,
                     isChinese: parent.isChinese,
                     collapsible: true,
@@ -121,6 +226,7 @@ function processChildren(items) {
                     rank: parent.rank,
                     model: parent.model,
                     company: parent.company,
+                    logo: parent.logo,
                     score: parent.score,
                     isChinese: parent.isChinese
                 });
@@ -135,6 +241,7 @@ function processChildren(items) {
                         rank: item.rank,
                         model: item.model,
                         company: item.company,
+                        logo: item.logo,
                         score: item.score,
                         isChinese: item.isChinese
                     });
@@ -165,6 +272,7 @@ function convertJSONToJS(jsonFilePath) {
             rank: model.rank,
             model: model.model,
             company: model.vendor,
+            logo: getCompanyLogo(model.vendor),
             score: model.score,
             isChinese: isChineseCompany(model.vendor)
         };
@@ -350,5 +458,6 @@ window.lastUpdated = "${dateStr}";
 }
 
 // 执行转换
+initLogoCache();  // 初始化logo缓存
 convertAllJSONFiles();
 generateUpdateJS();

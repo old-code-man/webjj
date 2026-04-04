@@ -153,7 +153,12 @@ function createRow(item, isSub = false, parentRank = null) {
     if (item.company !== undefined) {
         const companyCell = document.createElement('td');
         companyCell.className = 'col-company';
-        companyCell.textContent = item.company;
+        // 如果有logo，显示logo和公司名
+        if (item.logo) {
+            companyCell.innerHTML = `<img src="${item.logo}" alt="${item.company}" class="company-logo" onerror="this.style.display='none'"><span class="company-name">${item.company}</span>`;
+        } else {
+            companyCell.textContent = item.company;
+        }
         row.appendChild(companyCell);
     }
 

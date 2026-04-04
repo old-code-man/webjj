@@ -321,6 +321,26 @@ body {
     color: var(--primary-color);
 }
 
+/* 公司列样式 */
+.col-company {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.company-logo {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.company-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
 /* 使用量 */
 .col-usage {
     font-weight: 500;
