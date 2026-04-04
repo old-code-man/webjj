@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-// 配置
-const JSON_DIR = './api_data';
-const JS_DIR = '../data';
-const DATA_DIR = '../data'; // 存放 update.js 的目录
+// 配置（基于 __dirname = f:\upinfo\webjj\claw）
+const JSON_DIR = './api_data';    // f:\upinfo\webjj\claw\api_data
+const JS_DIR = '../data';         // f:\upinfo\webjj\data
+const DATA_DIR = '../data';       // f:\upinfo\webjj\data
 const RANK_DIFF_THRESHOLD = 10; // rank差异阈值
 const RERANK_AFTER_FILTER = false; // 筛选后是否重新排名，默认false保持原始排名
 

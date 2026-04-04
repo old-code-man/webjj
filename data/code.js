@@ -6,24 +6,24 @@ window.rankingData = {
     data: [
         {
                 rank: 1,
-                model: "claude-opus-4-6",
+                model: "claude-opus-4-6-thinking",
                 company: "Anthropic",
-                score: 1549,
+                score: 1546,
                 isChinese: false,
                 collapsible: true,
                 children: [
                         {
                                 rank: 2,
-                                model: "claude-opus-4-6-thinking",
+                                model: "claude-opus-4-6",
                                 company: "Anthropic",
-                                score: 1545,
+                                score: 1543,
                                 isChinese: false
                         },
                         {
                                 rank: 3,
                                 model: "claude-sonnet-4-6",
                                 company: "Anthropic",
-                                score: 1523,
+                                score: 1521,
                                 isChinese: false
                         }
                 ]
@@ -53,25 +53,32 @@ window.rankingData = {
                 rank: 7,
                 model: "gemini-3.1-pro-preview",
                 company: "Google",
-                score: 1455,
+                score: 1456,
                 isChinese: false
         },
         {
                 rank: 8,
-                model: "glm-5",
-                company: "Z.ai",
-                score: 1445,
-                isChinese: false
+                model: "qwen3.6-plus-preview",
+                company: "Alibaba",
+                score: 1454,
+                isChinese: true
         },
         {
                 rank: 9,
+                model: "glm-5",
+                company: "Z.ai",
+                score: 1441,
+                isChinese: false
+        },
+        {
+                rank: 10,
                 model: "glm-4.7",
                 company: "Z.ai",
                 score: 1439,
                 isChinese: false
         },
         {
-                rank: 10,
+                rank: 11,
                 model: "gemini-3-pro",
                 company: "Google",
                 score: 1438,
@@ -82,59 +89,52 @@ window.rankingData = {
                                 rank: 12,
                                 model: "gemini-3-flash",
                                 company: "Google",
-                                score: 1437,
+                                score: 1436,
                                 isChinese: false
                         }
                 ]
         },
         {
-                rank: 11,
+                rank: 13,
                 model: "mimo-v2-pro",
                 company: "Xiaomi",
-                score: 1437,
-                isChinese: true
-        },
-        {
-                rank: 13,
-                model: "minimax-m2.7",
-                company: "MiniMax",
-                score: 1435,
+                score: 1433,
                 isChinese: true
         },
         {
                 rank: 14,
                 model: "kimi-k2.5-thinking",
                 company: "Moonshot",
-                score: 1430,
+                score: 1429,
                 isChinese: true
         },
         {
                 rank: 15,
-                model: "gpt-5.4-medium (codex-harness)",
-                company: "OpenAI",
+                model: "minimax-m2.7",
+                company: "MiniMax",
                 score: 1428,
-                isChinese: false
+                isChinese: true
         },
         {
                 rank: 16,
+                model: "gpt-5.4-medium (codex-harness)",
+                company: "OpenAI",
+                score: 1427,
+                isChinese: false
+        },
+        {
+                rank: 17,
                 model: "kimi-k2.5-instant",
                 company: "Moonshot",
                 score: 1408,
                 isChinese: true
         },
         {
-                rank: 17,
+                rank: 18,
                 model: "gpt-5.3-codex (codex-harness)",
                 company: "OpenAI",
                 score: 1407,
                 isChinese: false
-        },
-        {
-                rank: 18,
-                model: "minimax-m2.5",
-                company: "MiniMax",
-                score: 1403,
-                isChinese: true
         },
         {
                 rank: 19,
@@ -145,268 +145,282 @@ window.rankingData = {
         },
         {
                 rank: 20,
+                model: "minimax-m2.5",
+                company: "MiniMax",
+                score: 1396,
+                isChinese: true
+        },
+        {
+                rank: 21,
                 model: "gpt-5-medium",
                 company: "OpenAI",
                 score: 1392,
                 isChinese: false
         },
         {
-                rank: 21,
+                rank: 22,
                 model: "minimax-m2.1-preview",
                 company: "MiniMax",
-                score: 1392,
+                score: 1391,
                 isChinese: true
         },
         {
-                rank: 22,
+                rank: 23,
                 model: "gemini-3-flash (thinking-minimal)",
                 company: "Google",
-                score: 1392,
+                score: 1391,
                 isChinese: false
         },
         {
-                rank: 23,
+                rank: 24,
                 model: "gpt-5.1-medium",
                 company: "OpenAI",
                 score: 1390,
                 isChinese: false
         },
         {
-                rank: 24,
+                rank: 25,
                 model: "claude-sonnet-4-5-20250929-thinking-32k",
                 company: "Anthropic",
-                score: 1389,
+                score: 1388,
                 isChinese: false
         },
         {
-                rank: 25,
+                rank: 26,
                 model: "qwen3.5-397b-a17b",
                 company: "Alibaba",
-                score: 1387,
+                score: 1386,
                 isChinese: true
         },
         {
-                rank: 26,
+                rank: 27,
                 model: "claude-sonnet-4-5-20250929",
                 company: "Anthropic",
                 score: 1386,
                 isChinese: false
         },
         {
-                rank: 27,
+                rank: 28,
+                model: "grok-4.20-beta-0309-reasoning",
+                company: "xAI",
+                score: 1386,
+                isChinese: false
+        },
+        {
+                rank: 29,
+                model: "gpt-5.4-mini-high",
+                company: "OpenAI",
+                score: 1385,
+                isChinese: false
+        },
+        {
+                rank: 30,
                 model: "claude-opus-4-1-20250805",
                 company: "Anthropic",
                 score: 1384,
                 isChinese: false
         },
         {
-                rank: 28,
-                model: "grok-4.20-beta-0309-reasoning",
-                company: "xAI",
-                score: 1378,
-                isChinese: false
-        },
-        {
-                rank: 29,
+                rank: 31,
                 model: "deepseek-v3.2-thinking",
                 company: "DeepSeek",
-                score: 1369,
+                score: 1368,
                 isChinese: true,
                 collapsible: true,
                 children: [
                         {
-                                rank: 38,
+                                rank: 40,
                                 model: "deepseek-v3.2",
                                 company: "DeepSeek",
-                                score: 1325,
+                                score: 1327,
                                 isChinese: true
                         }
                 ]
         },
         {
-                rank: 30,
+                rank: 32,
                 model: "qwen3.5-122b-a10b",
                 company: "Alibaba",
-                score: 1364,
-                isChinese: true
-        },
-        {
-                rank: 31,
-                model: "glm-4.6",
-                company: "Z.ai",
-                score: 1353,
-                isChinese: false
-        },
-        {
-                rank: 32,
-                model: "qwen3.5-27b",
-                company: "Alibaba",
-                score: 1346,
+                score: 1362,
                 isChinese: true
         },
         {
                 rank: 33,
+                model: "glm-4.6",
+                company: "Z.ai",
+                score: 1354,
+                isChinese: false
+        },
+        {
+                rank: 34,
+                model: "qwen3.5-27b",
+                company: "Alibaba",
+                score: 1344,
+                isChinese: true
+        },
+        {
+                rank: 35,
                 model: "gpt-5.1",
                 company: "OpenAI",
                 score: 1339,
                 isChinese: false
         },
         {
-                rank: 34,
+                rank: 36,
                 model: "mimo-v2-flash (non-thinking)",
                 company: "Xiaomi",
                 score: 1337,
                 isChinese: true
         },
         {
-                rank: 35,
+                rank: 37,
                 model: "gpt-5.2-codex",
                 company: "OpenAI",
-                score: 1336,
+                score: 1335,
                 isChinese: false
         },
         {
-                rank: 36,
+                rank: 38,
                 model: "kimi-k2-thinking-turbo",
                 company: "Moonshot",
-                score: 1328,
+                score: 1329,
                 isChinese: true
         },
         {
-                rank: 37,
+                rank: 39,
                 model: "gpt-5.1-codex",
                 company: "OpenAI",
                 score: 1328,
                 isChinese: false
         },
         {
-                rank: 39,
+                rank: 41,
                 model: "claude-haiku-4-5-20251001",
                 company: "Anthropic",
-                score: 1309,
+                score: 1312,
                 isChinese: false
         },
         {
-                rank: 40,
+                rank: 42,
                 model: "minimax-m2",
                 company: "MiniMax",
                 score: 1303,
                 isChinese: true
         },
         {
-                rank: 41,
+                rank: 43,
                 model: "mimo-v2-flash (thinking)",
                 company: "Xiaomi",
                 score: 1300,
                 isChinese: true
         },
         {
-                rank: 42,
+                rank: 44,
                 model: "deepseek-v3.2-exp",
                 company: "DeepSeek",
                 score: 1285,
                 isChinese: true
         },
         {
-                rank: 43,
+                rank: 45,
                 model: "qwen3-coder-480b-a35b-instruct",
                 company: "Alibaba",
                 score: 1280,
                 isChinese: true
         },
         {
-                rank: 44,
+                rank: 46,
                 model: "KAT-Coder-Pro-V1",
                 company: "KwaiKAT",
                 score: 1257,
                 isChinese: true
         },
         {
-                rank: 45,
+                rank: 47,
                 model: "qwen3.5-35b-a3b",
                 company: "Alibaba",
-                score: 1248,
+                score: 1247,
                 isChinese: true
         },
         {
-                rank: 46,
+                rank: 48,
                 model: "gemini-3.1-flash-lite-preview",
                 company: "Google",
-                score: 1242,
+                score: 1238,
                 isChinese: false
         },
         {
-                rank: 47,
+                rank: 49,
                 model: "gpt-5.1-codex-mini",
                 company: "OpenAI",
                 score: 1238,
                 isChinese: false
         },
         {
-                rank: 48,
+                rank: 50,
                 model: "qwen3.5-flash",
                 company: "Alibaba",
-                score: 1237,
+                score: 1235,
                 isChinese: true
         },
         {
-                rank: 49,
+                rank: 51,
                 model: "grok-4-1-fast-reasoning",
                 company: "xAI",
                 score: 1233,
                 isChinese: false
         },
         {
-                rank: 50,
+                rank: 52,
                 model: "mistral-large-3",
                 company: "Mistral",
-                score: 1220,
+                score: 1221,
                 isChinese: false
         },
         {
-                rank: 51,
+                rank: 53,
                 model: "grok-4.1-thinking",
                 company: "xAI",
-                score: 1206,
+                score: 1207,
                 isChinese: false
         },
         {
-                rank: 52,
+                rank: 54,
                 model: "gemini-2.5-pro",
                 company: "Google",
                 score: 1202,
                 isChinese: false
         },
         {
-                rank: 53,
+                rank: 55,
                 model: "devstral-2",
                 company: "Mistral",
                 score: 1198,
                 isChinese: false
         },
         {
-                rank: 54,
+                rank: 56,
                 model: "mercury-2",
                 company: "Inception AI",
-                score: 1183,
+                score: 1182,
                 isChinese: false
         },
         {
-                rank: 55,
+                rank: 57,
                 model: "grok-4-fast-reasoning",
                 company: "xAI",
-                score: 1147,
+                score: 1148,
                 isChinese: false
         },
         {
-                rank: 56,
+                rank: 58,
                 model: "grok-code-fast-1",
                 company: "xAI",
                 score: 1138,
                 isChinese: false
         },
         {
-                rank: 57,
+                rank: 59,
                 model: "devstral-medium-2507",
                 company: "Mistral",
                 score: 1090,
