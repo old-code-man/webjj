@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitClaw — 全流程研发效能平台</title>
+<style>
+  :root {
+    --bg: #060911;
+    --bg2: #0b0f1a;
+    --surface: #111827;
+    --surface2: #1a2236;
+    --border: #1e2d45;
+    --accent: #00d4ff;
+    --accent2: #7c3aed;
+    --accent3: #10b981;
+    --accent4: #f59e0b;
+    --danger: #ef4444;
+    --text: #e2e8f0;
+    --text2: #64748b;
+    --text3: #94a3b8;
+    --gradient: linear-gradient(135deg, #00d4ff 0%, #7c3aed 50%, #10b981 100%);
+    --gradient2: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── 背景装饰 ── */
+  .bg-grid {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .bg-glow {
+    position: fixed; width: 600px; height: 600px; border-radius: 50%;
+    filter: blur(120px); opacity: 0.15; pointer-events: none; z-index: 0;
+  }
+  .bg-glow-1 { background: var(--accent); top: -200px; right: -100px; }
+  .bg-glow-2 { background: var(--accent2); bottom: -200px; left: -100px; }
+
+  /* ── 导航 ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(6,9,17,0.85); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 64px; display: flex; align-items: center;
+  }
+  .nav-logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { margin-left: auto; display: flex; gap: 32px; }
+  .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    margin-left: 32px; padding: 8px 20px; border-radius: 8px;
+    background: var(--gradient2); color: #fff; font-size: 14px;
+    font-weight: 600; text-decoration: none; transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 120px 40px 80px; text-align: center; max-width: 900px; margin: 0 auto;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px; border-radius: 100px;
+    border: 1px solid rgba(0,212,255,0.3); background: rgba(0,212,255,0.08);
+    font-size: 13px; color: var(--accent); margin-bottom: 32px;
+  }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent3); animation: blink 2s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.15;
+    letter-spacing: -1px; margin-bottom: 24px;
+    background: linear-gradient(135deg, #fff 30%, var(--accent) 70%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); -webkit-text-fill-color: var(--accent); }
+  .hero-desc {
+    font-size: 18px; color: var(--text2); max-width: 640px;
+    margin: 0 auto 48px; line-height: 1.8;
+  }
+
+  .hero-stats {
+    display: flex; justify-content: center; gap: 48px; margin-bottom: 48px; flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 40px; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+  .stat-label { font-size: 13px; color: var(--text2); margin-top: 6px; }
+  .stat-divider { width: 1px; background: var(--border); align-self: stretch; }
+
+  .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 14px 32px; border-radius: 10px; border: none; cursor: pointer;
+    background: var(--gradient2); color: #fff; font-size: 16px; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-outline {
+    padding: 14px 32px; border-radius: 10px; border: 1px solid var(--border);
+    background: transparent; color: var(--text); font-size: 16px; font-weight: 500;
+    cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .btn-outline:hover { background: var(--surface); border-color: var(--accent); }
+
+  /* ── Section ── */
+  section { position: relative; z-index: 1; }
+  .section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-title { text-align: center; margin-bottom: 64px; }
+  .section-title h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .section-title p { color: var(--text2); font-size: 16px; max-width: 560px; margin: 0 auto; }
+
+  /* ── Pain Points ── */
+  .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .pain-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; transition: border-color 0.3s;
+  }
+  .pain-card:hover { border-color: rgba(0,212,255,0.3); }
+  .pain-icon { font-size: 32px; margin-bottom: 16px; }
+  .pain-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .pain-desc { font-size: 14px; color: var(--text2); }
+  .pain-time { margin-top: 12px; font-size: 12px; color: var(--danger); font-weight: 600; }
+
+  /* ── Pipeline ── */
+  .pipeline-wrap { position: relative; }
+  .pipeline-flow {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative;
+  }
+  .pipeline-flow::before {
+    content: ''; position: absolute; top: 48px; left: 12%; right: 12%; height: 2px;
+    background: var(--gradient); opacity: 0.3;
+  }
+  .pipe-step { text-align: center; position: relative; padding: 0 16px; }
+  .pipe-icon {
+    width: 96px; height: 96px; border-radius: 24px; margin: 0 auto 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px; position: relative; z-index: 1;
+    border: 2px solid transparent;
+  }
+  .pipe-icon-1 { background: rgba(0,212,255,0.1); border-color: rgba(0,212,255,0.3); color: var(--accent); }
+  .pipe-icon-2 { background: rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.3); color: var(--accent2); }
+  .pipe-icon-3 { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); color: var(--accent3); }
+  .pipe-icon-4 { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: var(--accent4); }
+  .pipe-num {
+    position: absolute; top: -10px; right: calc(50% - 58px); z-index: 2;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--gradient2); color: #fff; font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pipe-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .pipe-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+  .pipe-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 12px; }
+  .pipe-tag { padding: 3px 10px; border-radius: 6px; font-size: 11px; background: var(--surface2); color: var(--text3); }
+
+  /* ── Feature Grid ── */
+  .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+  .feat-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 32px; transition: border-color 0.3s, transform 0.2s;
+  }
+  .feat-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-2px); }
+  .feat-icon { font-size: 28px; margin-bottom: 16px; }
+  .feat-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .feat-desc { font-size: 14px; color: var(--text2); line-height: 1.7; }
+  .feat-tag { display: inline-block; margin-top: 14px; padding: 4px 12px; border-radius: 6px; font-size: 12px; background: rgba(0,212,255,0.1); color: var(--accent); }
+
+  /* ── Compare Table ── */
+  .compare { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+  .compare table { width: 100%; border-collapse: collapse; }
+  .compare th, .compare td { padding: 18px 28px; text-align: left; border-bottom: 1px solid var(--border); }
+  .compare th { background: var(--surface2); font-size: 13px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; }
+  .compare th:last-child, .compare td:last-child { text-align: center; }
+  .compare tr:last-child td { border-bottom: none; }
+  .compare .bad { color: var(--danger); font-size: 20px; }
+  .compare .good { color: var(--accent3); font-size: 20px; }
+  .compare .highlight td { background: rgba(0,212,255,0.04); }
+  .compare .highlight .val { font-size: 28px; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+  /* ── Architecture ── */
+  .arch { display: grid; grid-template-columns: 1fr auto 1fr; gap: 40px; align-items: center; max-width: 900px; margin: 0 auto; }
+  .arch-box { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; text-align: center; }
+  .arch-box h3 { font-size: 16px; margin-bottom: 16px; }
+  .arch-items { display: flex; flex-direction: column; gap: 10px; }
+  .arch-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text2); }
+  .arch-item span:first-child { font-size: 18px; }
+  .arch-arrow { font-size: 32px; color: var(--accent); }
+  .arch-label { font-size: 12px; color: var(--text2); text-align: center; }
+
+  /* ── Process Steps ── */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .step {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px 24px; position: relative; overflow: hidden;
+  }
+  .step::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--gradient);
+  }
+  .step-num { font-size: 48px; font-weight: 800; opacity: 0.08; position: absolute; top: 8px; right: 16px; line-height: 1; }
+  .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .step p { font-size: 13px; color: var(--text2); }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 100px 40px; text-align: center; position: relative; z-index: 1;
+    background: radial-gradient(ellipse at center, rgba(0,212,255,0.06) 0%, transparent 70%);
+  }
+  .cta-section h2 { font-size: 40px; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .cta-section p { color: var(--text2); font-size: 17px; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-features { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+  .cta-feat { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text2); }
+  .cta-feat::before { content: '✓'; color: var(--accent3); font-weight: 700; }
+
+  /* ── Footer ── */
+  footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 40px; text-align: center; color: var(--text2); font-size: 13px; }
+
+  /* ── Badge ── */
+  .tag-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 6px; font-size: 12px; background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 80px 20px 60px; }
+    .section { padding: 60px 20px; }
+    .pipeline-flow { grid-template-columns: 1fr; gap: 40px; }
+    .pipeline-flow::before { display: none; }
+    .arch { grid-template-columns: 1fr; }
+    .arch-arrow { transform: rotate(90deg); }
+  }
+
+  /* Scroll animation */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── Security Banner ── */
+  .security-banner {
+    background: linear-gradient(90deg, rgba(0,212,255,0.08) 0%, rgba(124,58,237,0.08) 100%);
+    border: 1px solid rgba(0,212,255,0.2); border-radius: 12px;
+    padding: 20px 28px; margin-bottom: 48px; display: flex; align-items: center; gap: 20px;
+  }
+  .security-banner .icon { font-size: 32px; }
+  .security-banner h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .security-banner p { font-size: 13px; color: var(--text2); }
+  .security-points { display: flex; gap: 24px; flex-wrap: wrap; margin-left: auto; }
+  .security-point { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--accent3); }
+
+  /* ── Contact Modal ── */
+  .contact-modal {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+    padding: 32px; z-index: 200; max-width: 500px; width: 90%;
+    display: none; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .contact-modal.active { display: block; }
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    z-index: 199; display: none; backdrop-filter: blur(4px);
+  }
+  .modal-overlay.active { display: block; }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px; font-size: 24px;
+    cursor: pointer; color: var(--text2); transition: color 0.2s;
+    background: none; border: none;
+  }
+  .modal-close:hover { color: var(--text); }
+  .modal-img { width: 100%; border-radius: 12px; margin-top: 16px; }
+
+  /* ── Product Demo Section ── */
+  .demo-preview {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+    padding: 40px; margin-top: 48px; position: relative; overflow: hidden;
+  }
+  .demo-preview::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--gradient);
+  }
+
+  /* Issue Demo Interface */
+  .issue-demo {
+    background: var(--bg2); border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .issue-header {
+    padding: 24px 28px; border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .issue-title {
+    font-size: 20px; font-weight: 700; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .issue-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;
+  }
+  .badge-open { background: rgba(16,185,129,0.15); color: var(--accent3); }
+  .badge-progress { background: rgba(0,212,255,0.15); color: var(--accent); }
+  .badge-merged { background: rgba(124,58,237,0.15); color: var(--accent2); }
+  .issue-meta {
+    font-size: 13px; color: var(--text2);
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+
+  .issue-timeline {
+    padding: 28px; max-height: 600px; overflow-y: auto;
+  }
+  .timeline-item {
+    display: flex; gap: 16px; margin-bottom: 24px;
+    opacity: 0; animation: fadeInUp 0.5s forwards;
+  }
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.3s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+  .timeline-item:nth-child(4) { animation-delay: 0.9s; }
+  .timeline-item:nth-child(5) { animation-delay: 1.2s; }
+  .timeline-item:nth-child(6) { animation-delay: 1.5s; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .timeline-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--gradient2); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; border: 2px solid var(--border);
+  }
+  .timeline-avatar.bot {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  }
+  .timeline-content {
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 20px;
+  }
+  .timeline-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px; flex-wrap: wrap; gap: 8px;
+  }
+  .timeline-author {
+    font-weight: 600; font-size: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .bot-badge {
+    padding: 2px 8px; border-radius: 6px; font-size: 11px;
+    background: var(--accent); color: var(--bg); font-weight: 700;
+  }
+  .timeline-time {
+    font-size: 12px; color: var(--text2);
+  }
+  .timeline-body {
+    font-size: 14px; color: var(--text); line-height: 1.7;
+  }
+  .timeline-body h4 {
+    font-size: 15px; margin-bottom: 8px; margin-top: 12px;
+    color: var(--accent);
+  }
+  .timeline-body ul {
+    margin: 8px 0; padding-left: 20px;
+  }
+  .timeline-body li {
+    margin: 4px 0; color: var(--text2);
+  }
+  .timeline-body code {
+    background: var(--bg); padding: 2px 6px; border-radius: 4px;
+    font-size: 13px; color: var(--accent); font-family: 'Consolas', monospace;
+  }
+
+  .action-box {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px; margin-top: 12px;
+  }
+  .action-box h4 {
+    font-size: 13px; color: var(--text2); margin-bottom: 12px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .action-links {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .action-link {
+    display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+    background: var(--surface2); border-radius: 6px;
+    text-decoration: none; color: var(--text);
+    transition: background 0.2s, border-color 0.2s;
+    border: 1px solid transparent;
+  }
+  .action-link:hover {
+    background: var(--surface); border-color: var(--accent);
+  }
+  .action-icon { font-size: 18px; }
+  .action-text { flex: 1; }
+  .action-label { font-size: 13px; font-weight: 600; }
+  .action-desc { font-size: 11px; color: var(--text2); }
+  .action-arrow { color: var(--text2); }
+
+  .status-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 8px; font-size: 12px;
+    font-weight: 600; margin-top: 8px;
+  }
+  .status-success { background: rgba(16,185,129,0.15); color: var(--accent3); }
+  .status-pending { background: rgba(245,158,11,0.15); color: var(--accent4); }
+  .status-info { background: rgba(0,212,255,0.15); color: var(--accent); }
+
+  .code-diff {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px; margin-top: 12px;
+    font-family: 'Consolas', monospace; font-size: 12px;
+    overflow-x: auto;
+  }
+  .diff-line { padding: 2px 8px; }
+  .diff-add { background: rgba(16,185,129,0.1); color: var(--accent3); }
+  .diff-remove { background: rgba(239,68,68,0.1); color: var(--danger); }
+  .diff-file { color: var(--accent); font-weight: 600; margin-bottom: 4px; }
+
+  .confirm-btn {
+    margin-top: 16px; padding: 10px 20px; border-radius: 8px;
+    background: var(--gradient2); color: #fff; border: none;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .confirm-btn:hover { opacity: 0.85; }
+
+  .deploy-progress {
+    margin-top: 12px; padding: 12px; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 8px;
+  }
+  .progress-step {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 0; font-size: 13px;
+  }
+  .progress-icon { font-size: 16px; }
+  .progress-step.done { color: var(--accent3); }
+  .progress-step.running { color: var(--accent); }
+  .progress-step.pending { color: var(--text2); opacity: 0.5; }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<!-- 导航 -->
+<nav>
+  <div class="nav-logo">Git<span>Claw</span></div>
+  <div class="nav-links">
+    <a href="#pain">痛点</a>
+    <a href="#pipeline">全流程</a>
+    <a href="#features">核心能力</a>
+    <a href="#compare">效果对比</a>
+    <a href="#arch">架构</a>
+  </div>
+  <a href="#contact" class="nav-cta">申请试用</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge">本地化部署 · 数据不出内网 · 支持 Claude Code</div>
+  <h1>全流程研发效能平台<br>基于 <em>Git 工作流</em> 驱动</h1>
+  <p class="hero-desc">
+    一套平台覆盖从需求分析、AI辅助编码、代码验证到滚动上线的完整闭环。<br>
+    无需切换工具链，无需对接第三方服务，数据完全私有化部署。支持 <strong style="color: var(--accent);">Claude Code</strong> AI 智能编码。
+  </p>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">1h</div>
+      <div class="stat-label">需求交付周期</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">0</div>
+      <div class="stat-label">数据外传风险</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">1天</div>
+      <div class="stat-label">快速接入上线</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">72h+</div>
+      <div class="stat-label">节省人工时间/需求</div>
+    </div>
+  </div>
+
+  <div class="hero-actions">
+    <button onclick="openModal()" class="btn-primary">🚀 免费申请演示</button>
+    <a href="#pipeline" class="btn-outline">了解全流程 →</a>
+  </div>
+</section>
+
+<!-- 痛点 -->
+<section id="pain">
+  <div class="section">
+    <div class="section-title">
+      <h2>传统研发模式的困境</h2>
+      <p>工具分散、流程断裂、数据不可控，研发团队效率被严重拖累</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">🔀</div>
+        <div class="pain-title">需求与代码断层</div>
+        <div class="pain-desc">需求写在 Jira，代码提交在 GitHub，两套系统割裂，关联全靠人工备注。</div>
+        <div class="pain-time">平均每天浪费 2h+ 检索对齐</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🐢</div>
+        <div class="pain-title">验证上线周期漫长</div>
+        <div class="pain-desc">测试环境、预发布环境、生产环境层层流转，一个需求改完上线要等 2-3 天。</div>
+        <div class="pain-time">3天交付周期无法压缩</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🔒</div>
+        <div class="pain-title">数据主权无法保障</div>
+        <div class="pain-desc">需求文档、代码资产、流程数据全部上传到 SaaS 平台，合规风险如影随形。</div>
+        <div class="pain-time">敏感行业合规压力极大</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🔧</div>
+        <div class="pain-title">工具链碎片化</div>
+        <div class="pain-desc">Jira + GitLab + Jenkins + SonarQube + K8s……接入维护成本高，工程师疲于应付。</div>
+        <div class="pain-time">平均每位工程师掌握 6+ 工具</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📊</div>
+        <div class="pain-title">交付质量黑盒化</div>
+        <div class="pain-desc">代码review、自动化测试、安全扫描分散在不同平台，质量状况难以全局把控。</div>
+        <div class="pain-time">线上故障定位耗时数小时</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">⚡</div>
+        <div class="pain-title">需求响应速度慢</div>
+        <div class="pain-desc">业务提需求 → 产品评审 → 开发排期 → 编码 → 测试 → 上线，全链路依赖人工流转。</div>
+        <div class="pain-time">一个紧急需求等待超过 24h</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 全流程管道 -->
+<section id="pipeline">
+  <div class="section">
+    <div class="section-title">
+      <h2>Git 驱动的全流程闭环</h2>
+      <p>一条分支、一个 MR，覆盖从需求到上线的完整生命周期</p>
+    </div>
+    <div class="security-banner">
+      <div class="icon">🛡️</div>
+      <div>
+        <h3>私有化部署，数据不出内网</h3>
+        <p>一键安装包，自主运维，数据库/文件存储/Git仓库全部在企业自有环境内。</p>
+      </div>
+      <div class="security-points">
+        <div class="security-point">✓ 数据不离开机房</div>
+        <div class="security-point">✓ 无外部网络依赖</div>
+        <div class="security-point">✓ 完全自主可控</div>
+      </div>
+    </div>
+    <div class="pipeline-flow">
+      <div class="pipe-step">
+        <div class="pipe-icon pipe-icon-1">
+          <div class="pipe-num">1</div>
+          💡
+        </div>
+        <div class="pipe-title">需求分析</div>
+        <div class="pipe-desc">基于 Git Issue 创建需求卡片，自动关联分支，需求描述即任务起点</div>
+        <div class="pipe-tags">
+          <span class="pipe-tag">需求卡片</span>
+          <span class="pipe-tag">分支关联</span>
+          <span class="pipe-tag">优先级</span>
+        </div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-icon pipe-icon-2">
+          <div class="pipe-num">2</div>
+          ⚙️
+        </div>
+        <div class="pipe-title">AI 辅助编码</div>
+        <div class="pipe-desc">Claude Code 智能辅助 → Commit → Push，自动触发 CI流水线，代码风格检查 + 单元测试</div>
+        <div class="pipe-tags">
+          <span class="pipe-tag">Claude Code</span>
+          <span class="pipe-tag">自动CI</span>
+          <span class="pipe-tag">代码检查</span>
+        </div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-icon pipe-icon-3">
+          <div class="pipe-num">3</div>
+          ✅
+        </div>
+        <div class="pipe-title">开发验证</div>
+        <div class="pipe-desc">MR 合并审查 → 自动部署到测试环境 → 自动化验收 → 安全扫描全量通过</div>
+        <div class="pipe-tags">
+          <span class="pipe-tag">MR审查</span>
+          <span class="pipe-tag">自动部署</span>
+          <span class="pipe-tag">安全扫描</span>
+        </div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-icon pipe-icon-4">
+          <div class="pipe-num">4</div>
+          🚀
+        </div>
+        <div class="pipe-title">滚动上线</div>
+        <div class="pipe-desc">一键审批发布，自动灰度放量，故障秒级回滚，全链路可观测</div>
+        <div class="pipe-tags">
+          <span class="pipe-tag">灰度发布</span>
+          <span class="pipe-tag">一键回滚</span>
+          <span class="pipe-tag">监控告警</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 产品效果展示 -->
+    <div class="demo-preview">
+      <div class="section-title" style="margin-bottom: 32px;">
+        <h2 style="font-size: 28px;">📊 产品效果展示</h2>
+        <p>基于 Git Issue 的智能交互界面 - 从需求到发布全流程</p>
+      </div>
+
+      <div class="issue-demo">
+        <!-- Issue Header -->
+        <div class="issue-header">
+          <div class="issue-title">
+            <span class="issue-badge badge-merged">
+              <span>✓</span> Merged
+            </span>
+            <span>为用户中心页面添加暗色主题支持</span>
+          </div>
+          <div class="issue-meta">
+            <span>👤 zhangsan 创建</span>
+            <span>🏷️ #feat-234</span>
+            <span>📅 2 小时前</span>
+            <span>💬 6 条评论</span>
+          </div>
+        </div>
+
+        <!-- Issue Timeline -->
+        <div class="issue-timeline">
+          <!-- 1. 用户提交需求 -->
+          <div class="timeline-item">
+            <div class="timeline-avatar">👤</div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-author">zhangsan</div>
+                <div class="timeline-time">2小时前</div>
+              </div>
+              <div class="timeline-body">
+                <p><strong>需求描述：</strong></p>
+                <p>用户反馈在夜间使用时，当前用户中心页面过于刺眼。希望能够添加暗色主题支持，并且能够记住用户的主题偏好。</p>
+                <p><strong>验收标准：</strong></p>
+                <ul>
+                  <li>添加主题切换按钮</li>
+                  <li>实现暗色/亮色两种主题</li>
+                  <li>主题选择持久化存储</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. GitClaw 分析并给出方案 -->
+          <div class="timeline-item">
+            <div class="timeline-avatar bot">🤖</div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-author">
+                  GitClaw Bot <span class="bot-badge">AI</span>
+                </div>
+                <div class="timeline-time">1小时58分钟前</div>
+              </div>
+              <div class="timeline-body">
+                <p>✨ 已完成需求分析，以下是实现方案：</p>
+
+                <h4>📋 技术方案</h4>
+                <ul>
+                  <li>使用 CSS Variables 实现主题切换</li>
+                  <li>在 <code>UserCenter.tsx</code> 添加主题状态管理</li>
+                  <li>使用 localStorage 持久化主题选择</li>
+                  <li>创建 <code>ThemeToggle</code> 组件</li>
+                </ul>
+
+                <h4>📁 涉及文件</h4>
+                <ul>
+                  <li><code>src/pages/UserCenter.tsx</code> - 添加主题状态</li>
+                  <li><code>src/components/ThemeToggle.tsx</code> - 新建切换组件</li>
+                  <li><code>src/styles/themes.css</code> - 主题样式定义</li>
+                </ul>
+
+                <h4>⏱️ 预估工作量</h4>
+                <p>开发时间：30分钟 | 测试时间：15分钟</p>
+
+                <div class="status-badge status-pending">
+                  ⏳ 等待确认方案
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. 用户确认方案 -->
+          <div class="timeline-item">
+            <div class="timeline-avatar">👤</div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-author">zhangsan</div>
+                <div class="timeline-time">1小时55分钟前</div>
+              </div>
+              <div class="timeline-body">
+                <p>✅ 方案确认，可以开始实现</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. GitClaw 完成开发并提交 MR -->
+          <div class="timeline-item">
+            <div class="timeline-avatar bot">🤖</div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-author">
+                  GitClaw Bot <span class="bot-badge">AI</span>
+                </div>
+                <div class="timeline-time">1小时22分钟前</div>
+              </div>
+              <div class="timeline-body">
+                <p>🎉 代码实现完成！已创建 Merge Request 并通过所有自动化检查</p>
+
+                <div class="action-box">
+                  <h4>🔍 代码审查</h4>
+                  <div class="action-links">
+                    <a href="#" class="action-link">
+                      <span class="action-icon">🔀</span>
+                      <div class="action-text">
+                        <div class="action-label">Merge Request #156</div>
+                        <div class="action-desc">feat: add dark theme support for user center</div>
+                      </div>
+                      <span class="action-arrow">→</span>
+                    </a>
+                    <a href="#" class="action-link">
+                      <span class="action-icon">👁️</span>
+                      <div class="action-text">
+                        <div class="action-label">预览环境</div>
+                        <div class="action-desc">https://preview-234.gitclaw.work</div>
+                      </div>
+                      <span class="action-arrow">→</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="code-diff">
+                  <div class="diff-file">📄 src/pages/UserCenter.tsx</div>
+                  <div class="diff-line diff-add">+ const [theme, setTheme] = useLocalStorage('theme', 'light');</div>
+                  <div class="diff-line diff-add">+ useEffect(() => { document.body.className = theme; }, [theme]);</div>
+                  <div class="diff-line">...</div>
+                  <div class="diff-file">📄 src/components/ThemeToggle.tsx (new)</div>
+                  <div class="diff-line diff-add">+ export const ThemeToggle = ({ value, onChange }) => { ... }</div>
+                </div>
+
+                <div class="status-badge status-success">
+                  ✅ CI 检查通过 · ✅ 单元测试通过 · ✅ 安全扫描通过
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. 用户合入 MR -->
+          <div class="timeline-item">
+            <div class="timeline-avatar">👤</div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-author">zhangsan</div>
+                <div class="timeline-time">18分钟前</div>
+              </div>
+              <div class="timeline-body">
+                <p>✅ 已合并 Merge Request #156</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. GitClaw 同步发布进展 -->
+          <div class="timeline-item">
+            <div class="timeline-avatar bot">🤖</div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-author">
+                  GitClaw Bot <span class="bot-badge">AI</span>
+                </div>
+                <div class="timeline-time">2分钟前</div>
+              </div>
+              <div class="timeline-body">
+                <p>🚀 自动部署流程已启动</p>
+
+                <div class="deploy-progress">
+                  <div class="progress-step done">
+                    <span class="progress-icon">✅</span>
+                    <span>构建镜像完成 (2m 34s)</span>
+                  </div>
+                  <div class="progress-step done">
+                    <span class="progress-icon">✅</span>
+                    <span>推送到测试环境 (34s)</span>
+                  </div>
+                  <div class="progress-step done">
+                    <span class="progress-icon">✅</span>
+                    <span>自动化测试通过 (1m 12s)</span>
+                  </div>
+                  <div class="progress-step done">
+                    <span class="progress-icon">✅</span>
+                    <span>灰度发布 5% 流量 (18s)</span>
+                  </div>
+                  <div class="progress-step running">
+                    <span class="progress-icon">⏳</span>
+                    <span>监控指标正常，准备全量发布...</span>
+                  </div>
+                </div>
+
+                <div class="status-badge status-info">
+                  🌐 已上线：https://app.gitclaw.work
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 核心能力 -->
+<section id="features">
+  <div class="section">
+    <div class="section-title">
+      <h2>核心能力</h2>
+      <p>平台内置研发全链路所需能力，开箱即用，无需对接第三方</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">🤖</div>
+        <div class="feat-title">Claude Code 智能编码</div>
+        <div class="feat-desc">集成 Claude Code AI 编码助手，智能代码补全、自动化重构、Bug 修复建议，大幅提升编码效率和代码质量。</div>
+        <span class="feat-tag">AI 驱动</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔄</div>
+        <div class="feat-title">Git 原生分支策略</div>
+        <div class="feat-desc">内置 GitFlow / Trunk-Based 多种分支模型，需求自动创建分支，MR 自动关联 Issue，全链路可追溯。</div>
+        <span class="feat-tag">Git 原生</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <div class="feat-title">自动化 CI/CD 流水线</div>
+        <div class="feat-desc">代码提交即触发构建，自动执行测试、安全扫描、镜像构建，流水线状态实时同步到需求卡片。</div>
+        <span class="feat-tag">零配置启动</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🧪</div>
+        <div class="feat-title">智能自动化测试</div>
+        <div class="feat-desc">支持单元测试、集成测试、E2E测试全覆盖，测试报告自动生成并挂载到 MR 审查页面。</div>
+        <span class="feat-tag">测试左移</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🐳</div>
+        <div class="feat-title">容器化一键部署</div>
+        <div class="feat-desc">内置镜像仓库和 K8s 编排能力，支持蓝绿部署、灰度发布、金丝雀策略，故障一键回滚。</div>
+        <span class="feat-tag">滚动上线</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔍</div>
+        <div class="feat-title">代码安全扫描</div>
+        <div class="feat-desc">集成 SAST/DAST 安全扫描，敏感信息检测，依赖漏洞扫描，发布前安全门禁强制卡点。</div>
+        <span class="feat-tag">安全内网化</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title">研发效能度量</div>
+        <div class="feat-desc">需求交付周期、代码评审时长、构建频率、缺陷逃逸率等核心指标自动采集，全局看板实时洞察。</div>
+        <span class="feat-tag">数据驱动</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🏢</div>
+        <div class="feat-title">私有化一键部署</div>
+        <div class="feat-desc">一条命令完成集群初始化，所有组件打包交付，无需互联网访问，彻底消除数据外传风险。</div>
+        <span class="feat-tag">数据不出网</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔌</div>
+        <div class="feat-title">Webhook 开放集成</div>
+        <div class="feat-desc">支持与企业微信、钉钉、飞书等 IM 工具对接，审批通知、发布状态实时推送，工程师免切换工具。</div>
+        <span class="feat-tag">无缝接入</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 效果对比 -->
+<section id="compare">
+  <div class="section">
+    <div class="section-title">
+      <h2>效率对比</h2>
+      <p>同样的团队规模，截然不同的交付速度</p>
+    </div>
+    <div class="compare">
+      <table>
+        <thead>
+          <tr>
+            <th>维度</th>
+            <th>传统模式</th>
+            <th>GitClaw</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>单个需求交付周期</td>
+            <td class="bad">🔴 3~5 天</td>
+            <td class="highlight"><span class="val good">✓ 1~2 小时</span></td>
+          </tr>
+          <tr>
+            <td>工具链数量</td>
+            <td class="bad">🔴 6~10 个系统</td>
+            <td class="good">🟢 1 个平台</td>
+          </tr>
+          <tr class="highlight">
+            <td>需求与代码关联</td>
+            <td class="bad">🔴 纯手工关联</td>
+            <td class="good">🟢 自动绑定</td>
+          </tr>
+          <tr>
+            <td>部署上线方式</td>
+            <td class="bad">🔴 人工操作，多次审批</td>
+            <td class="good">🟢 一键审批，滚动发布</td>
+          </tr>
+          <tr class="highlight">
+            <td>数据存储位置</td>
+            <td class="bad">🔴 多平台分散存储</td>
+            <td class="good">🟢 完全私有化</td>
+          </tr>
+          <tr>
+            <td>新项目接入时间</td>
+            <td class="bad">🔴 2~4 周</td>
+            <td class="good">🟢 1 天内</td>
+          </tr>
+          <tr class="highlight">
+            <td>故障恢复时间</td>
+            <td class="bad">🔴 30分钟 ~ 数小时</td>
+            <td class="good">🟢 秒级自动回滚</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 部署架构 -->
+<section id="arch">
+  <div class="section">
+    <div class="section-title">
+      <h2>部署架构</h2>
+      <p>轻量级安装包，一键初始化，零运维负担</p>
+    </div>
+    <div class="arch">
+      <div class="arch-box">
+        <h3>🖥️ 你的基础设施</h3>
+        <div class="arch-items">
+          <div class="arch-item"><span>🖥️</span> 私有 GitLab / Gitea</div>
+          <div class="arch-item"><span>☸️</span> Kubernetes 集群</div>
+          <div class="arch-item"><span>🗄️</span> MySQL / PostgreSQL</div>
+          <div class="arch-item"><span>🐰</span> Redis（可选）</div>
+        </div>
+      </div>
+      <div class="arch-arrow">➜</div>
+      <div class="arch-box">
+        <h3>🚀 GitClaw</h3>
+        <div class="arch-items">
+          <div class="arch-item"><span>🤖</span> Claude Code AI 引擎</div>
+          <div class="arch-item"><span>📋</span> 需求管理引擎</div>
+          <div class="arch-item"><span>🔄</span> CI/CD 流水线中枢</div>
+          <div class="arch-item"><span>🛡️</span> 安全扫描中心</div>
+        </div>
+      </div>
+    </div>
+    <div class="arch-label" style="margin-top: 16px;">
+      <span class="tag-badge">⚙️ Ansible / Helm 一键安装</span>
+      <span class="tag-badge">🐳 Docker Compose 单机版可用</span>
+      <span class="tag-badge">🔄 在线热更新</span>
+    </div>
+  </div>
+</section>
+
+<!-- 接入流程 -->
+<section id="process">
+  <div class="section">
+    <div class="section-title">
+      <h2>快速接入</h2>
+      <p>从下载到跑通第一个需求，全流程不超过一天</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>申请演示</h3>
+        <p>联系我们，获取完整产品演示环境和私有化部署包</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>环境准备</h3>
+        <p>准备 K8s 集群或单机服务器，网络隔离环境，无需通外网</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>一键部署</h3>
+        <p>执行安装脚本，自动初始化数据库、创建默认流水线模板</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>创建第一个需求</h3>
+        <p>导入项目，提交第一个 Issue，体验从开发到上线的全流程</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta-section">
+  <h2>准备好提升研发效能了吗？</h2>
+  <p>联系我们获取完整演示环境和技术架构方案支持<br><small style="color: var(--text3);">官网：<a href="https://gitclaw.work" target="_blank" style="color: var(--accent); text-decoration: none;">gitclaw.work</a></small></p>
+  <div class="hero-actions" style="justify-content: center;">
+    <button onclick="openModal()" class="btn-primary" style="cursor: pointer; border: none;">📬 联系销售团队</button>
+    <button onclick="openModal()" class="btn-outline" style="cursor: pointer;">🎯 申请试用</button>
+  </div>
+  <div class="cta-features">
+    <span class="cta-feat">免费演示环境</span>
+    <span class="cta-feat">7×24 技术支持</span>
+    <span class="cta-feat">按需定制开发</span>
+    <span class="cta-feat">数据迁移保障</span>
+  </div>
+</section>
+
+<!-- Contact Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+<div class="contact-modal" id="contactModal">
+  <button class="modal-close" onclick="closeModal()">×</button>
+  <h3 style="font-size: 24px; margin-bottom: 8px;">联系我们</h3>
+  <p style="color: var(--text2); margin-bottom: 16px;">扫描下方二维码或保存图片添加联系人</p>
+  <img src="./contact-qr.png" alt="联系方式" class="modal-img" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div style=\'padding:60px 20px; text-align:center; background:var(--surface2); border-radius:12px; color:var(--text2); margin-top:16px;\'><div style=\'font-size:48px; margin-bottom:16px;\'>📱</div><div style=\'font-size:16px; margin-bottom:8px;\'>联系方式二维码</div><small>请将联系二维码命名为 contact-qr.png<br>并放置在同目录下</small></div>')">
+</div>
+
+<footer>
+  <p>© 2026 GitClaw · 全流程研发效能平台 · AI 驱动研发协作 · <a href="https://gitclaw.work" target="_blank" style="color: var(--accent); text-decoration: none;">gitclaw.work</a></p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.section, .compare, .arch, .cta-section');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Modal functions
+  function openModal() {
+    document.getElementById('modalOverlay').classList.add('active');
+    document.getElementById('contactModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.getElementById('contactModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+
+</body>
+</html>
