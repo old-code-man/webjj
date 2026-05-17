@@ -9,7 +9,7 @@ window.rankingData = {
                 model: "dreamina-seedance-2.0-720p",
                 company: "Bytedance",
                 logo: "",
-                score: 1454,
+                score: 1462,
                 isChinese: true
         },
         {
@@ -17,7 +17,7 @@ window.rankingData = {
                 model: "happyhorse-1.0",
                 company: "Alibaba-ATH",
                 logo: "",
-                score: 1444,
+                score: 1445,
                 isChinese: true
         },
         {
@@ -25,7 +25,7 @@ window.rankingData = {
                 model: "grok-imagine-video-720p",
                 company: "xAI",
                 logo: "",
-                score: 1421,
+                score: 1423,
                 isChinese: false,
                 collapsible: true,
                 children: [
@@ -34,26 +34,26 @@ window.rankingData = {
                                 model: "grok-imagine-video-480p",
                                 company: "xAI",
                                 logo: "",
-                                score: 1382,
+                                score: 1383,
                                 isChinese: false
                         }
                 ]
         },
         {
                 rank: 4,
-                model: "veo-3.1-audio-1080p",
+                model: "veo-3.1-audio",
                 company: "Google",
                 logo: "",
-                score: 1402,
+                score: 1397,
                 isChinese: false,
                 collapsible: true,
                 children: [
                         {
                                 rank: 5,
-                                model: "veo-3.1-audio",
+                                model: "veo-3.1-audio-1080p",
                                 company: "Google",
                                 logo: "",
-                                score: 1396,
+                                score: 1394,
                                 isChinese: false
                         },
                         {
@@ -61,7 +61,7 @@ window.rankingData = {
                                 model: "veo-3.1-fast-audio",
                                 company: "Google",
                                 logo: "",
-                                score: 1383,
+                                score: 1384,
                                 isChinese: false
                         },
                         {
@@ -79,7 +79,7 @@ window.rankingData = {
                 model: "vidu-q3-pro",
                 company: "Shengshu",
                 logo: "",
-                score: 1359,
+                score: 1361,
                 isChinese: true
         },
         {
@@ -87,19 +87,11 @@ window.rankingData = {
                 model: "kling-v3-pro",
                 company: "KlingAI",
                 logo: "",
-                score: 1357,
+                score: 1360,
                 isChinese: true
         },
         {
                 rank: 11,
-                model: "wan2.5-i2v-preview",
-                company: "Alibaba",
-                logo: "",
-                score: 1334,
-                isChinese: true
-        },
-        {
-                rank: 12,
                 model: "veo-3-audio",
                 company: "Google",
                 logo: "",
@@ -116,29 +108,29 @@ window.rankingData = {
                                 isChinese: false
                         },
                         {
-                                rank: 20,
+                                rank: 21,
                                 model: "veo-3-fast",
                                 company: "Google",
                                 logo: "",
                                 score: 1256,
                                 isChinese: false
-                        },
-                        {
-                                rank: 21,
-                                model: "veo-3",
-                                company: "Google",
-                                logo: "",
-                                score: 1255,
-                                isChinese: false
                         }
                 ]
+        },
+        {
+                rank: 12,
+                model: "wan2.5-i2v-preview",
+                company: "Alibaba",
+                logo: "",
+                score: 1325,
+                isChinese: true
         },
         {
                 rank: 14,
                 model: "wan2.6-i2v",
                 company: "Alibaba",
                 logo: "",
-                score: 1308,
+                score: 1316,
                 isChinese: true
         },
         {
@@ -146,7 +138,7 @@ window.rankingData = {
                 model: "seedance-v1.5-pro",
                 company: "Bytedance",
                 logo: "",
-                score: 1304,
+                score: 1306,
                 isChinese: true
         },
         {
@@ -154,7 +146,7 @@ window.rankingData = {
                 model: "pixverse-v5.6",
                 company: "Pixverse",
                 logo: "",
-                score: 1298,
+                score: 1302,
                 isChinese: false
         },
         {
@@ -162,7 +154,7 @@ window.rankingData = {
                 model: "kling-2.6-pro",
                 company: "KlingAI",
                 logo: "",
-                score: 1290,
+                score: 1294,
                 isChinese: true
         },
         {
@@ -178,19 +170,35 @@ window.rankingData = {
                 model: "seedance-v1-pro",
                 company: "Bytedance",
                 logo: "",
-                score: 1271,
+                score: 1272,
+                isChinese: true
+        },
+        {
+                rank: 20,
+                model: "hailuo-2.3",
+                company: "MiniMax",
+                logo: "",
+                score: 1257,
                 isChinese: true
         },
         {
                 rank: 22,
-                model: "hailuo-2.3",
-                company: "MiniMax",
+                model: "veo-3",
+                company: "Google",
                 logo: "",
                 score: 1255,
-                isChinese: true
+                isChinese: false
         },
         {
                 rank: 23,
+                model: "p-video",
+                company: "Pruna",
+                logo: "",
+                score: 1243,
+                isChinese: true
+        },
+        {
+                rank: 24,
                 model: "vidu-q2-turbo",
                 company: "Shengshu",
                 logo: "",
@@ -207,14 +215,6 @@ window.rankingData = {
                                 isChinese: true
                         }
                 ]
-        },
-        {
-                rank: 24,
-                model: "p-video",
-                company: "Pruna",
-                logo: "",
-                score: 1237,
-                isChinese: true
         },
         {
                 rank: 25,
@@ -283,7 +283,7 @@ window.rankingData = {
                 model: "seedance-v1-lite",
                 company: "Bytedance",
                 logo: "",
-                score: 1183,
+                score: 1184,
                 isChinese: true
         },
         {
@@ -307,7 +307,7 @@ window.rankingData = {
                 model: "ltx-2-19b",
                 company: "lightricks",
                 logo: "",
-                score: 1139,
+                score: 1140,
                 isChinese: false
         },
         {

@@ -9,7 +9,7 @@ window.rankingData = {
                 model: "gpt-image-2 (medium)",
                 company: "OpenAI",
                 logo: "",
-                score: 1510,
+                score: 1467,
                 isChinese: false
         },
         {
@@ -25,7 +25,7 @@ window.rankingData = {
                 model: "gemini-3-pro-image-preview-2k (nano-banana-pro)",
                 company: "Google",
                 logo: "",
-                score: 1389,
+                score: 1387,
                 isChinese: false
         },
         {
@@ -33,7 +33,7 @@ window.rankingData = {
                 model: "gemini-3-pro-image-preview (nano-banana-pro)",
                 company: "Google",
                 logo: "",
-                score: 1387,
+                score: 1386,
                 isChinese: false
         },
         {
@@ -41,7 +41,7 @@ window.rankingData = {
                 model: "gemini-3.1-flash-image-preview (nano-banana-2) [web-search]",
                 company: "Google",
                 logo: "",
-                score: 1387,
+                score: 1386,
                 isChinese: false
         },
         {
@@ -49,97 +49,121 @@ window.rankingData = {
                 model: "gpt-image-1.5-high-fidelity",
                 company: "OpenAI",
                 logo: "",
-                score: 1376,
+                score: 1373,
                 isChinese: false
         },
         {
                 rank: 7,
-                model: "grok-imagine-image",
+                model: "grok-imagine-image-quality",
                 company: "xAI",
                 logo: "",
-                score: 1334,
+                score: 1356,
                 isChinese: false
         },
         {
                 rank: 8,
+                model: "uni-1.1-max",
+                company: "Luma AI",
+                logo: "",
+                score: 1336,
+                isChinese: false
+        },
+        {
+                rank: 9,
+                model: "grok-imagine-image",
+                company: "xAI",
+                logo: "",
+                score: 1329,
+                isChinese: false
+        },
+        {
+                rank: 10,
                 model: "grok-imagine-image-pro (20260207)",
                 company: "xAI",
                 logo: "",
-                score: 1316,
+                score: 1315,
                 isChinese: false,
                 collapsible: true,
                 children: [
                         {
-                                rank: 9,
+                                rank: 11,
                                 model: "grok-imagine-image (20260207)",
                                 company: "xAI",
                                 logo: "",
-                                score: 1312,
+                                score: 1311,
                                 isChinese: false
                         }
                 ]
         },
         {
-                rank: 10,
-                model: "seedream-4.5",
-                company: "Bytedance",
+                rank: 12,
+                model: "uni-1.1",
+                company: "Luma AI",
                 logo: "",
-                score: 1304,
-                isChinese: true
+                score: 1306,
+                isChinese: false
         },
         {
-                rank: 11,
+                rank: 13,
                 model: "wan2.7-image-pro",
                 company: "Alibaba",
                 logo: "",
-                score: 1304,
+                score: 1302,
                 isChinese: true,
                 collapsible: true,
                 children: [
                         {
-                                rank: 12,
+                                rank: 15,
                                 model: "wan2.7-image",
                                 company: "Alibaba",
                                 logo: "",
-                                score: 1303,
+                                score: 1302,
                                 isChinese: true
                         }
                 ]
         },
         {
-                rank: 13,
-                model: "gemini-2.5-flash-image-preview (nano-banana)",
-                company: "Google",
-                logo: "",
-                score: 1300,
-                isChinese: false
-        },
-        {
                 rank: 14,
-                model: "hunyuan-image-3.0-instruct",
-                company: "Tencent",
-                logo: "",
-                score: 1299,
-                isChinese: true
-        },
-        {
-                rank: 15,
-                model: "seedream-5.0-lite",
+                model: "seedream-4.5",
                 company: "Bytedance",
                 logo: "",
-                score: 1292,
+                score: 1302,
                 isChinese: true
         },
         {
                 rank: 16,
-                model: "seedream-4-2k",
-                company: "Bytedance",
+                model: "hunyuan-image-3.0-instruct",
+                company: "Tencent",
                 logo: "",
-                score: 1274,
+                score: 1301,
                 isChinese: true
         },
         {
                 rank: 17,
+                model: "gemini-2.5-flash-image-preview (nano-banana)",
+                company: "Google",
+                logo: "",
+                score: 1298,
+                isChinese: false
+        },
+        {
+                rank: 18,
+                model: "seedream-5.0-lite",
+                company: "Bytedance",
+                logo: "",
+                score: 1293,
+                isChinese: true
+        },
+        {
+                rank: 19,
+                model: "seedream-4-2k",
+                company: "Bytedance",
+                logo: "",
+                score: 1273,
+                isChinese: true
+        },
+        {
+                rank: 20,
                 model: "qwen-image-2.0-pro-2026-04-22",
                 company: "Alibaba",
                 logo: "",
@@ -147,7 +171,7 @@ window.rankingData = {
                 isChinese: true
         },
         {
-                rank: 18,
+                rank: 21,
                 model: "flux-2-max",
                 company: "Black Forest Labs",
                 logo: "",
@@ -155,7 +179,7 @@ window.rankingData = {
                 isChinese: false
         },
         {
-                rank: 19,
+                rank: 22,
                 model: "reve-v1.1",
                 company: "Reve",
                 logo: "",
@@ -163,7 +187,7 @@ window.rankingData = {
                 isChinese: false
         },
         {
-                rank: 20,
+                rank: 23,
                 model: "qwen-image-2.0-2026-03-03",
                 company: "Alibaba",
                 logo: "",
@@ -171,39 +195,39 @@ window.rankingData = {
                 isChinese: true
         },
         {
-                rank: 21,
+                rank: 24,
                 model: "kling-image-o1",
                 company: "KlingAI",
                 logo: "",
-                score: 1256,
+                score: 1254,
                 isChinese: true
-        },
-        {
-                rank: 22,
-                model: "flux-2-pro",
-                company: "Black Forest Labs",
-                logo: "",
-                score: 1241,
-                isChinese: false
-        },
-        {
-                rank: 23,
-                model: "qwen-image-edit",
-                company: "Alibaba",
-                logo: "",
-                score: 1239,
-                isChinese: true
-        },
-        {
-                rank: 24,
-                model: "reve-v1",
-                company: "Reve",
-                logo: "",
-                score: 1237,
-                isChinese: false
         },
         {
                 rank: 25,
+                model: "flux-2-pro",
+                company: "Black Forest Labs",
+                logo: "",
+                score: 1243,
+                isChinese: false
+        },
+        {
+                rank: 26,
+                model: "qwen-image-edit",
+                company: "Alibaba",
+                logo: "",
+                score: 1241,
+                isChinese: true
+        },
+        {
+                rank: 27,
+                model: "reve-v1",
+                company: "Reve",
+                logo: "",
+                score: 1236,
+                isChinese: false
+        },
+        {
+                rank: 28,
                 model: "qwen-image-edit-2511",
                 company: "Alibaba",
                 logo: "",
@@ -211,63 +235,63 @@ window.rankingData = {
                 isChinese: true
         },
         {
-                rank: 26,
+                rank: 29,
                 model: "wan2.6-image",
                 company: "Alibaba",
                 logo: "",
-                score: 1230,
+                score: 1231,
                 isChinese: true
-        },
-        {
-                rank: 27,
-                model: "flux-2-flex",
-                company: "Black Forest Labs",
-                logo: "",
-                score: 1226,
-                isChinese: false
-        },
-        {
-                rank: 28,
-                model: "flux-2-dev",
-                company: "Black Forest Labs",
-                logo: "",
-                score: 1226,
-                isChinese: false
-        },
-        {
-                rank: 29,
-                model: "flux-2-klein-9b",
-                company: "Black Forest Labs",
-                logo: "",
-                score: 1225,
-                isChinese: false
         },
         {
                 rank: 30,
-                model: "seedream-4-high-res-fal",
-                company: "Bytedance",
+                model: "flux-2-flex",
+                company: "Black Forest Labs",
                 logo: "",
-                score: 1224,
-                isChinese: true
+                score: 1227,
+                isChinese: false
         },
         {
                 rank: 31,
-                model: "seedream-4-fal",
-                company: "Bytedance",
+                model: "flux-2-klein-9b",
+                company: "Black Forest Labs",
                 logo: "",
-                score: 1213,
-                isChinese: true
+                score: 1224,
+                isChinese: false
         },
         {
                 rank: 32,
-                model: "p-image-edit",
-                company: "Pruna",
+                model: "flux-2-dev",
+                company: "Black Forest Labs",
                 logo: "",
-                score: 1210,
-                isChinese: true
+                score: 1223,
+                isChinese: false
         },
         {
                 rank: 33,
+                model: "seedream-4-high-res-fal",
+                company: "Bytedance",
+                logo: "",
+                score: 1221,
+                isChinese: true
+        },
+        {
+                rank: 34,
+                model: "p-image-edit",
+                company: "Pruna",
+                logo: "",
+                score: 1212,
+                isChinese: true
+        },
+        {
+                rank: 35,
+                model: "seedream-4-fal",
+                company: "Bytedance",
+                logo: "",
+                score: 1212,
+                isChinese: true
+        },
+        {
+                rank: 36,
                 model: "reve-v1.1-fast",
                 company: "Reve",
                 logo: "",
@@ -275,39 +299,39 @@ window.rankingData = {
                 isChinese: false
         },
         {
-                rank: 34,
+                rank: 37,
                 model: "reve-edit-fast",
                 company: "Reve",
                 logo: "",
-                score: 1200,
-                isChinese: false
-        },
-        {
-                rank: 35,
-                model: "flux-2-klein-4b",
-                company: "Black Forest Labs",
-                logo: "",
-                score: 1190,
-                isChinese: false
-        },
-        {
-                rank: 36,
-                model: "wan2.5-i2i-preview",
-                company: "Alibaba",
-                logo: "",
-                score: 1184,
-                isChinese: true
-        },
-        {
-                rank: 37,
-                model: "flux-1-kontext-max",
-                company: "Black Forest Labs",
-                logo: "",
-                score: 1183,
+                score: 1199,
                 isChinese: false
         },
         {
                 rank: 38,
+                model: "flux-2-klein-4b",
+                company: "Black Forest Labs",
+                logo: "",
+                score: 1189,
+                isChinese: false
+        },
+        {
+                rank: 39,
+                model: "flux-1-kontext-max",
+                company: "Black Forest Labs",
+                logo: "",
+                score: 1182,
+                isChinese: false
+        },
+        {
+                rank: 40,
+                model: "wan2.5-i2i-preview",
+                company: "Alibaba",
+                logo: "",
+                score: 1181,
+                isChinese: true
+        },
+        {
+                rank: 41,
                 model: "flux-1-kontext-pro",
                 company: "Black Forest Labs",
                 logo: "",
@@ -315,15 +339,15 @@ window.rankingData = {
                 isChinese: false
         },
         {
-                rank: 39,
+                rank: 42,
                 model: "flux-1-kontext-dev",
                 company: "Black Forest Labs",
                 logo: "",
-                score: 1152,
+                score: 1151,
                 isChinese: false
         },
         {
-                rank: 40,
+                rank: 43,
                 model: "seededit-3.0",
                 company: "Bytedance",
                 logo: "",
@@ -331,7 +355,7 @@ window.rankingData = {
                 isChinese: true
         },
         {
-                rank: 41,
+                rank: 44,
                 model: "gpt-image-1",
                 company: "OpenAI",
                 logo: "",
@@ -339,31 +363,31 @@ window.rankingData = {
                 isChinese: false
         },
         {
-                rank: 42,
+                rank: 45,
                 model: "gpt-image-1-mini",
                 company: "OpenAI",
                 logo: "",
-                score: 1125,
+                score: 1126,
                 isChinese: false
         },
         {
-                rank: 43,
+                rank: 46,
                 model: "gemini-2.0-flash-preview-image-generation",
                 company: "Google",
                 logo: "",
-                score: 1083,
+                score: 1082,
                 isChinese: false
         },
         {
-                rank: 44,
+                rank: 47,
                 model: "bagel",
                 company: "Bytedance",
                 logo: "",
-                score: 1028,
+                score: 1027,
                 isChinese: true
         },
         {
-                rank: 45,
+                rank: 48,
                 model: "step1x-edit",
                 company: "StepFun",
                 logo: "",
