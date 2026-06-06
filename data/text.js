@@ -9,7 +9,7 @@ window.rankingData = {
                 model: "claude-opus-4-6-thinking",
                 company: "Anthropic",
                 logo: "",
-                score: 1502,
+                score: 1503,
                 isChinese: false,
                 collapsible: true,
                 children: [
@@ -37,7 +37,7 @@ window.rankingData = {
                                 model: "claude-opus-4-7",
                                 company: "Anthropic",
                                 logo: "",
-                                score: 1492,
+                                score: 1493,
                                 isChinese: false
                         }
                 ]
@@ -47,7 +47,7 @@ window.rankingData = {
                 model: "muse-spark",
                 company: "Meta",
                 logo: "",
-                score: 1490,
+                score: 1489,
                 isChinese: false
         },
         {
@@ -55,7 +55,7 @@ window.rankingData = {
                 model: "gemini-3.1-pro-preview",
                 company: "Google",
                 logo: "",
-                score: 1489,
+                score: 1488,
                 isChinese: false
         },
         {
@@ -68,7 +68,7 @@ window.rankingData = {
                 collapsible: true,
                 children: [
                         {
-                                rank: 15,
+                                rank: 16,
                                 model: "gemini-3-flash",
                                 company: "Google",
                                 logo: "",
@@ -82,7 +82,7 @@ window.rankingData = {
                 model: "gpt-5.5-high",
                 company: "OpenAI",
                 logo: "",
-                score: 1484,
+                score: 1482,
                 isChinese: false
         },
         {
@@ -95,10 +95,10 @@ window.rankingData = {
         },
         {
                 rank: 10,
-                model: "grok-4.20-beta1",
-                company: "xAI",
+                model: "gemini-3.5-flash",
+                company: "Google",
                 logo: "",
-                score: 1479,
+                score: 1477,
                 isChinese: false
         },
         {
@@ -106,35 +106,51 @@ window.rankingData = {
                 model: "gpt-5.2-chat-latest-20260210",
                 company: "OpenAI",
                 logo: "",
-                score: 1477,
+                score: 1476,
                 isChinese: false
         },
         {
                 rank: 12,
-                model: "gpt-5.5",
-                company: "OpenAI",
+                model: "glm-5.1",
+                company: "Z.ai",
                 logo: "",
-                score: 1476,
-                isChinese: false
+                score: 1475,
+                isChinese: true
         },
         {
                 rank: 13,
-                model: "grok-4.20-beta-0309-reasoning",
-                company: "xAI",
+                model: "gpt-5.5",
+                company: "OpenAI",
                 logo: "",
-                score: 1476,
+                score: 1474,
                 isChinese: false
         },
         {
                 rank: 14,
-                model: "grok-4.20-multi-agent-beta-0309",
+                model: "grok-4.20-beta1",
                 company: "xAI",
                 logo: "",
-                score: 1475,
+                score: 1474,
                 isChinese: false
         },
         {
-                rank: 16,
+                rank: 15,
+                model: "qwen3.7-max-preview",
+                company: "Alibaba",
+                logo: "",
+                score: 1474,
+                isChinese: true
+        },
+        {
+                rank: 17,
+                model: "grok-4.20-beta-0309-reasoning",
+                company: "xAI",
+                logo: "",
+                score: 1473,
+                isChinese: false
+        },
+        {
+                rank: 18,
                 model: "claude-opus-4-5-20251101-thinking-32k",
                 company: "Anthropic",
                 logo: "",
@@ -142,35 +158,19 @@ window.rankingData = {
                 isChinese: false
         },
         {
-                rank: 17,
-                model: "ernie-5.1",
-                company: "Baidu",
-                logo: "",
-                score: 1472,
-                isChinese: true
-        },
-        {
-                rank: 18,
-                model: "glm-5.1",
-                company: "Z.ai",
-                logo: "",
-                score: 1472,
-                isChinese: true
-        },
-        {
                 rank: 19,
-                model: "gpt-5.5-instant",
-                company: "OpenAI",
+                model: "grok-4.20-multi-agent-beta-0309",
+                company: "xAI",
                 logo: "",
                 score: 1472,
                 isChinese: false
         },
         {
                 rank: 20,
-                model: "claude-sonnet-4-6",
-                company: "Anthropic",
+                model: "gpt-5.5-instant",
+                company: "OpenAI",
                 logo: "",
-                score: 1468,
+                score: 1471,
                 isChinese: false
         }
 ]
