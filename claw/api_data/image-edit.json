@@ -2,7 +2,7 @@
   "meta": {
     "leaderboard": "image-edit",
     "source_url": "https://arena.ai/leaderboard/image-edit",
-    "fetched_at": "2026-06-05T06:04:24.738927+00:00",
+    "fetched_at": "2026-06-13T06:01:11.151463+00:00",
     "last_updated": "Jun 3, 2026",
     "model_count": 49
   },
@@ -290,7 +290,7 @@
       "rank": 32,
       "model": "flux-2-klein-9b",
       "vendor": "Black Forest Labs",
-      "license": "open",
+      "license": null,
       "score": 1224,
       "ci": 3,
       "votes": 489204
@@ -299,7 +299,7 @@
       "rank": 33,
       "model": "flux-2-dev",
       "vendor": "Black Forest Labs",
-      "license": "open",
+      "license": null,
       "score": 1220,
       "ci": 5,
       "votes": 169269
@@ -389,7 +389,7 @@
       "rank": 43,
       "model": "flux-1-kontext-dev",
       "vendor": "Black Forest Labs",
-      "license": "open",
+      "license": null,
       "score": 1149,
       "ci": 3,
       "votes": 3652096
