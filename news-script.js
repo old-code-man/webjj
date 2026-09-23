@@ -16,10 +16,22 @@ function byDateDesc(a, b) {
     return String(b.date || '').localeCompare(String(a.date || ''));
 }
 
-// 外部链接：有 url 才渲染“查看原文”
-function sourceLink(item) {
+// 外部链接：有 url 才渲染“来源 ↗”
+function sourceLink(item, label) {
     if (!item.url) return '';
-    return `<a class="news-source-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">查看原文 ↗</a>`;
+    return `<a class="item-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" title="查看原文：${escapeHtml(item.source || '网络')}">${escapeHtml(label || '原文')} ↗</a>`;
+}
+
+// 短日期：2026-09-22 -> 09-22
+function shortDate(date) {
+    const value = String(date || '');
+    return value.length >= 10 ? value.slice(5) : value;
+}
+
+// 设置模块条数
+function setCount(id, count) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = count + ' 条';
 }
 
 /* ------------------------- 模块一：最新资讯 ------------------------- */
@@ -39,6 +51,7 @@ function renderNewsList(category) {
 
     if (items.length === 0) {
         list.innerHTML = '<div class="news-empty">暂无该分类的资讯</div>';
+        setCount('news-count', 0);
         return;
     }
 
@@ -46,16 +59,14 @@ function renderNewsList(category) {
         <article class="news-item">
             <div class="news-item-meta">
                 <span class="news-badge news-badge-${escapeHtml(categoryClass(item.category))}">${escapeHtml(item.category || '资讯')}</span>
-                <time class="news-date">${escapeHtml(item.date || '')}</time>
+                <time class="news-date">${escapeHtml(shortDate(item.date))}</time>
+                ${sourceLink(item, item.source || '原文')}
             </div>
-            <h3 class="news-item-title">${escapeHtml(item.title || '')}</h3>
-            <p class="news-item-summary">${escapeHtml(item.summary || '')}</p>
-            <div class="news-item-footer">
-                <span class="news-source">来源：${escapeHtml(item.source || '网络')}</span>
-                ${sourceLink(item)}
-            </div>
+            <h3 class="news-item-title" title="${escapeHtml((item.title || '') + (item.summary ? ' —— ' + item.summary : ''))}">${escapeHtml(item.title || '')}</h3>
         </article>
     `).join('');
+
+    setCount('news-count', items.length);
 }
 
 // 分类名 -> class 后缀（中文分类映射为稳定的英文样式名）
@@ -112,19 +123,16 @@ function renderQuotes() {
 
     box.innerHTML = quotes.map(item => `
         <figure class="quote-card">
-            <div class="quote-mark">“</div>
-            <blockquote class="quote-text">${escapeHtml(item.quote || '')}</blockquote>
+            <blockquote class="quote-text" title="${escapeHtml(item.quote || '')}">${escapeHtml(item.quote || '')}</blockquote>
             <figcaption class="quote-footer">
-                <span class="quote-avatar">${escapeHtml((item.name || '?').slice(0, 1))}</span>
-                <span class="quote-person">
-                    <span class="quote-name">${escapeHtml(item.name || '')}</span>
-                    <span class="quote-role">${escapeHtml(item.role || '')}</span>
-                </span>
-                <span class="quote-date">${escapeHtml(item.date || '')}</span>
+                <span class="quote-name">${escapeHtml(item.name || '')}</span>
+                <span class="quote-role">${escapeHtml(item.role || '')}</span>
+                ${sourceLink(item, shortDate(item.date))}
             </figcaption>
-            ${item.url ? `<a class="quote-source-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">来源：${escapeHtml(item.source || '网络')} ↗</a>` : ''}
         </figure>
     `).join('');
+
+    setCount('quote-count', quotes.length);
 }
 
 /* ------------------------- 模块三：新产品 ------------------------- */
@@ -153,7 +161,7 @@ function renderProducts() {
     }
 
     box.innerHTML = products.map(item => `
-        <article class="product-card">
+        <article class="product-card" title="${escapeHtml(item.name || '')}${item.description ? ' —— ' + escapeHtml(item.description) : ''}">
             <div class="product-card-head">
                 <h3 class="product-name">${escapeHtml(item.name || '')}</h3>
                 <span class="product-status product-status-${escapeHtml(statusClass(item.status))}">${escapeHtml(item.status || '')}</span>
@@ -163,12 +171,13 @@ function renderProducts() {
                 <span class="product-dot">·</span>
                 <span class="product-category">${escapeHtml(item.category || '')}</span>
                 <span class="product-dot">·</span>
-                <time class="product-date">${escapeHtml(item.date || '')}</time>
+                <time>${escapeHtml(shortDate(item.date))}</time>
+                ${sourceLink(item, '↗')}
             </div>
-            <p class="product-desc">${escapeHtml(item.description || '')}</p>
-            ${item.url ? `<a class="product-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">查看详情 ↗</a>` : ''}
         </article>
     `).join('');
+
+    setCount('product-count', products.length);
 }
 
 /* ------------------------- 初始化 ------------------------- */

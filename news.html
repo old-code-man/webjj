@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="news-styles.css">
 </head>
-<body>
+<body class="news-page">
     <!-- 顶部导航栏 -->
     <nav class="navbar">
         <div class="nav-content">
@@ -20,46 +20,45 @@
         </div>
     </nav>
 
-    <!-- 主内容区 -->
+    <!-- 主内容区：三个模块同屏显示 -->
     <main class="container">
         <h1 class="page-title">AI 最新资讯<span class="update-date" id="update-date">(更新于2026-09-23)</span></h1>
 
-        <!-- 模块一：最新资讯 -->
-        <section class="news-section" id="section-news">
-            <div class="section-head">
-                <h2 class="section-title"><span class="section-icon">📰</span>最新资讯</h2>
-                <p class="section-desc">AI 行业近期动态，按时间倒序排列</p>
-            </div>
+        <div class="news-dashboard">
+            <!-- 模块一：最新资讯 -->
+            <section class="news-module" id="module-news">
+                <header class="module-head">
+                    <h2 class="module-title"><span class="module-icon">📰</span>最新资讯</h2>
+                    <span class="module-count" id="news-count"></span>
+                </header>
+                <div class="news-filters" id="news-filters"></div>
+                <div class="module-body" id="news-list">
+                    <div class="news-empty">加载数据中...</div>
+                </div>
+            </section>
 
-            <div class="news-filters" id="news-filters"></div>
-            <div class="news-list" id="news-list">
-                <div class="news-empty">加载数据中...</div>
-            </div>
-        </section>
+            <!-- 模块二：名人言论 -->
+            <section class="news-module" id="module-quotes">
+                <header class="module-head">
+                    <h2 class="module-title"><span class="module-icon">💬</span>名人言论</h2>
+                    <span class="module-count" id="quote-count"></span>
+                </header>
+                <div class="module-body" id="quote-list">
+                    <div class="news-empty">加载数据中...</div>
+                </div>
+            </section>
 
-        <!-- 模块二：名人言论 -->
-        <section class="news-section" id="section-quotes">
-            <div class="section-head">
-                <h2 class="section-title"><span class="section-icon">💬</span>名人言论</h2>
-                <p class="section-desc">行业领袖、学者与创作者对 AI 的最新判断</p>
-            </div>
-
-            <div class="quote-grid" id="quote-list">
-                <div class="news-empty">加载数据中...</div>
-            </div>
-        </section>
-
-        <!-- 模块三：新产品 -->
-        <section class="news-section" id="section-products">
-            <div class="section-head">
-                <h2 class="section-title"><span class="section-icon">🚀</span>新产品</h2>
-                <p class="section-desc">近期发布、开源或即将上市的 AI 产品与硬件</p>
-            </div>
-
-            <div class="product-grid" id="product-list">
-                <div class="news-empty">加载数据中...</div>
-            </div>
-        </section>
+            <!-- 模块三：新产品 -->
+            <section class="news-module" id="module-products">
+                <header class="module-head">
+                    <h2 class="module-title"><span class="module-icon">🚀</span>新产品</h2>
+                    <span class="module-count" id="product-count"></span>
+                </header>
+                <div class="module-body" id="product-list">
+                    <div class="news-empty">加载数据中...</div>
+                </div>
+            </section>
+        </div>
     </main>
 
     <!-- 底部 -->
