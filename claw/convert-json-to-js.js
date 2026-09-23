@@ -117,6 +117,7 @@ if (!fs.existsSync(JS_DIR)) {
 
 // 判断是否是中国公司
 function isChineseCompany(vendor) {
+    if (!vendor) return false;
     const chineseCompanies = [
         'Alibaba', 'Tencent', 'Baidu', 'ByteDance', 'Bytedance',
         'KlingAI', 'Shengshu', 'MiniMax', 'Minimax',
@@ -132,6 +133,7 @@ function isChineseCompany(vendor) {
 
 // 提取模型系列（去除变体名，只保留核心名称）
 function getModelSeries(modelId) {
+    if (!modelId || typeof modelId !== 'string') return '';
     // 移除常见的模型变体名称，保留核心系列名
     return modelId
         .replace(/-(opus|sonnet|haiku|flash|pro|ultra|turbo|standard|master|fast|lite|thinking|preview|instruct)/gi, '')
