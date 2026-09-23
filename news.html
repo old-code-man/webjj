@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>词元Web - AI 最新资讯</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="news-styles.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-title">词元Web</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">总览</a>
+                <a href="ranking.html" class="nav-link">排行榜</a>
+                <a href="news.html" class="nav-link active">AI资讯</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="container">
+        <h1 class="page-title">AI 最新资讯<span class="update-date" id="update-date">(更新于2026-09-23)</span></h1>
+
+        <!-- 模块一：最新资讯 -->
+        <section class="news-section" id="section-news">
+            <div class="section-head">
+                <h2 class="section-title"><span class="section-icon">📰</span>最新资讯</h2>
+                <p class="section-desc">AI 行业近期动态，按时间倒序排列</p>
+            </div>
+
+            <div class="news-filters" id="news-filters"></div>
+            <div class="news-list" id="news-list">
+                <div class="news-empty">加载数据中...</div>
+            </div>
+        </section>
+
+        <!-- 模块二：名人言论 -->
+        <section class="news-section" id="section-quotes">
+            <div class="section-head">
+                <h2 class="section-title"><span class="section-icon">💬</span>名人言论</h2>
+                <p class="section-desc">行业领袖、学者与创作者对 AI 的最新判断</p>
+            </div>
+
+            <div class="quote-grid" id="quote-list">
+                <div class="news-empty">加载数据中...</div>
+            </div>
+        </section>
+
+        <!-- 模块三：新产品 -->
+        <section class="news-section" id="section-products">
+            <div class="section-head">
+                <h2 class="section-title"><span class="section-icon">🚀</span>新产品</h2>
+                <p class="section-desc">近期发布、开源或即将上市的 AI 产品与硬件</p>
+            </div>
+
+            <div class="product-grid" id="product-list">
+                <div class="news-empty">加载数据中...</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部 -->
+    <footer class="footer">
+        <p>&copy; 2026 词元Web. 保留所有权利.联系:ciyuanweb@qq.com</p>
+    </footer>
+
+    <script src="data/news.js"></script>
+    <script src="news-script.js"></script>
+</body>
+</html>
