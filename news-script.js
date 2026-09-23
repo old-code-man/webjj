@@ -19,7 +19,7 @@ function byDateDesc(a, b) {
 // 外部链接：有 url 才渲染“来源 ↗”
 function sourceLink(item, label) {
     if (!item.url) return '';
-    return `<a class="item-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" title="查看原文：${escapeHtml(item.source || '网络')}">${escapeHtml(label || '原文')} ↗</a>`;
+    return `<a class="item-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" title="查看原文：${escapeHtml(item.source || '网络')}">${escapeHtml(label || '原文 ↗')}</a>`;
 }
 
 // 短日期：2026-09-22 -> 09-22
@@ -60,7 +60,7 @@ function renderNewsList(category) {
             <div class="news-item-meta">
                 <span class="news-badge news-badge-${escapeHtml(categoryClass(item.category))}">${escapeHtml(item.category || '资讯')}</span>
                 <time class="news-date">${escapeHtml(shortDate(item.date))}</time>
-                ${sourceLink(item, item.source || '原文')}
+                ${sourceLink(item, (item.source || '原文') + ' ↗')}
             </div>
             <h3 class="news-item-title" title="${escapeHtml((item.title || '') + (item.summary ? ' —— ' + item.summary : ''))}">${escapeHtml(item.title || '')}</h3>
         </article>
@@ -127,7 +127,7 @@ function renderQuotes() {
             <figcaption class="quote-footer">
                 <span class="quote-name">${escapeHtml(item.name || '')}</span>
                 <span class="quote-role">${escapeHtml(item.role || '')}</span>
-                ${sourceLink(item, shortDate(item.date))}
+                ${sourceLink(item, shortDate(item.date) + ' ↗')}
             </figcaption>
         </figure>
     `).join('');
