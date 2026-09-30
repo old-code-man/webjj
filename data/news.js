@@ -6,9 +6,41 @@
 //   products[]新产品：  name / company / category / date / status / description / url
 window.newsData = {
     // 数据更新时间，页面标题处展示
-    updated: "2026-09-23",
+    updated: "2026-09-28",
 
     news: [
+        {
+            date: "2026-09-26",
+            category: "产业动态",
+            title: "《说好的放慢 AI 脚步，怎么一转眼又开始神仙打架了？》：Claude Opus 5.5 领跑，GPT-6 Sol 略弱",
+            summary: "最新模型大战回顾：Claude Opus 5.5 在跑分与意图理解上明显领先 GPT-6 Sol，GPT-6 Luna 则主打性价比；三者价格差距悬殊（0.07 美元至 5.98 美元），真实场景建议\"高配计划\"配\"低价执行\"组合使用。",
+            source: "澎湃新闻",
+            url: "https://www.thepaper.cn/newsDetail_forward_34147565"
+        },
+        {
+            date: "2026-09-24",
+            category: "模型发布",
+            title: "Anthropic 发布 Claude Opus 5.5：AA 榜单 SOTA，成本比上一代低 40%",
+            summary: "Anthropic 发布 Claude 5.5 系列首款模型 Claude Opus 5.5。Terminal-Bench 4.0 跑分 66.4%，知识工作 benchmark 也领先 GPT-6 Astra 与 Fable 5.1；整体成本比上一代 Opus 5 低 40%，输出速度提升 30%。Sonnet 5.5、Haiku 5.5 预计数周内陆续发布。",
+            source: "新智元",
+            url: "https://hub-assets-cache.baai.ac.cn/view/58222"
+        },
+        {
+            date: "2026-09-24",
+            category: "模型发布",
+            title: "OpenAI 发布 GPT-6 Sol 与 GPT-6 Luna：Luna 0.07 美元低价主攻性价比",
+            summary: "Anthropic 发布数小时后，OpenAI 推出 GPT-6 Sol 与 GPT-6 Luna 应战。GPT-6 Luna 以 0.07 美元低价定位性价比执行，Sol 为 1 美元。与 Claude Opus 5.5 相比，两者在编程、知识工作表现存在差距。",
+            source: "新智元",
+            url: "https://hub-assets-cache.baai.ac.cn/view/58222"
+        },
+        {
+            date: "2026-09-23",
+            category: "产业动态",
+            title: "四款国产模型周调用量破 10 万亿 Token：DeepSeek 与混元占比近半",
+            summary: "AGI 评测中心发布最新《AGI 市场观察》：9 月 12 日—18 日期间，DeepSeek V4 Flash、DeepSeek V4.1 Flash、腾讯混元 Hy4 Preview、智谱 AI GLM 5.3 Flash 四款模型周调用量均超 10 万亿，合计占比约 66%；DeepSeek V4.1 Flash 周调用量周增 483.62%，排名从第 9 跃升至第 2。",
+            source: "观察者网",
+            url: "https://www.163.com/dy/article/L7H79RR5051481US.html?spss=dy_author"
+        },
         {
             date: "2026-09-22",
             category: "产业动态",
@@ -207,6 +239,24 @@ window.newsData = {
     ],
 
     products: [
+        {
+            name: "Claude Opus 5.5",
+            company: "Anthropic",
+            category: "通用大模型",
+            date: "2026-09-24",
+            status: "已发布",
+            description: "Claude 5.5 系列首款模型，Terminal-Bench 4.0 与知识工作 benchmark 领先，整体成本比上一代低 40%，输出速度提升 30%。Sonnet 5.5、Haiku 5.5 亦即将发布。",
+            url: "https://hub-assets-cache.baai.ac.cn/view/58222"
+        },
+        {
+            name: "GPT-6 Sol / Luna",
+            company: "OpenAI",
+            category: "通用大模型",
+            date: "2026-09-24",
+            status: "已发布",
+            description: "应战 Claude Opus 5.5 发布。Luna 0.07 美元主打性价比执行，Sol 1 美元；编程、知识工作表现与领先模型存在差距。",
+            url: "https://hub-assets-cache.baai.ac.cn/view/58222"
+        },
         {
             name: "GPT-6 Astra",
             company: "OpenAI",
