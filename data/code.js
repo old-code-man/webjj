@@ -6,50 +6,50 @@ window.rankingData = {
     data: [
         {
                 rank: 1,
-                model: "gpt-6-astra-max",
-                company: "OpenAI",
+                model: "claude-opus-5.5-max",
+                company: "Anthropic",
                 logo: "",
-                score: 1800,
+                score: 1827,
                 isChinese: false
         },
         {
                 rank: 2,
-                model: "claude-fable-5.1-max",
-                company: "Anthropic",
+                model: "gpt-6-astra-max",
+                company: "OpenAI",
                 logo: "",
-                score: 1758,
+                score: 1792,
                 isChinese: false
         },
         {
                 rank: 3,
-                model: "claude-opus-5-max",
+                model: "claude-fable-5.1-max",
                 company: "Anthropic",
                 logo: "",
-                score: 1687,
+                score: 1751,
                 isChinese: false
         },
         {
                 rank: 4,
-                model: "qwen3.8-max-0902",
-                company: "Alibaba",
+                model: "claude-opus-5-max",
+                company: "Anthropic",
                 logo: "",
-                score: 1681,
-                isChinese: true
+                score: 1693,
+                isChinese: false
         },
         {
                 rank: 5,
-                model: "kimi-k3-max",
-                company: "Moonshot",
+                model: "gpt-6-sol-max",
+                company: "OpenAI",
                 logo: "",
-                score: 1674,
-                isChinese: true
+                score: 1681,
+                isChinese: false
         },
         {
                 rank: 6,
                 model: "qwen3.8-max",
                 company: "Alibaba",
                 logo: "",
-                score: 1671,
+                score: 1672,
                 isChinese: true
         },
         {
@@ -57,111 +57,111 @@ window.rankingData = {
                 model: "claude-opus-5-high",
                 company: "Anthropic",
                 logo: "",
-                score: 1660,
+                score: 1662,
                 isChinese: false
         },
         {
                 rank: 8,
-                model: "muse-spark-1.3-max",
-                company: "Meta",
+                model: "qwen3.8-max-0902",
+                company: "Alibaba",
                 logo: "",
-                score: 1652,
-                isChinese: false
+                score: 1662,
+                isChinese: true
         },
         {
                 rank: 9,
-                model: "qwen3.8-flash-next",
-                company: "Alibaba",
+                model: "kimi-k3-max",
+                company: "Moonshot",
                 logo: "",
-                score: 1635,
+                score: 1660,
                 isChinese: true
         },
         {
                 rank: 10,
-                model: "claude-fable-5-high",
-                company: "Anthropic",
+                model: "muse-spark-1.3-max",
+                company: "Meta",
                 logo: "",
-                score: 1628,
+                score: 1656,
                 isChinese: false
         },
         {
                 rank: 11,
-                model: "hy4-preview",
-                company: "Tencent",
+                model: "qwen3.8-flash-next",
+                company: "Alibaba",
                 logo: "",
-                score: 1624,
+                score: 1636,
                 isChinese: true
         },
         {
                 rank: 12,
-                model: "muse-spark-1.3 (xHigh)",
-                company: "Meta",
+                model: "hy4-preview",
+                company: "Tencent",
                 logo: "",
-                score: 1623,
-                isChinese: false
+                score: 1631,
+                isChinese: true
         },
         {
                 rank: 13,
-                model: "grok-4.6-high",
+                model: "grok-4.7-xhigh",
                 company: "SpaceXAI",
                 logo: "",
-                score: 1618,
+                score: 1629,
                 isChinese: false
         },
         {
                 rank: 14,
-                model: "gpt-5.6-sol-xhigh (codex-harness)",
-                company: "OpenAI",
+                model: "claude-fable-5-high",
+                company: "Anthropic",
                 logo: "",
-                score: 1617,
+                score: 1627,
                 isChinese: false
         },
         {
                 rank: 15,
-                model: "glm-5.3-max",
-                company: "Z.ai",
+                model: "muse-spark-1.3 (xHigh)",
+                company: "Meta",
                 logo: "",
-                score: 1614,
-                isChinese: true
+                score: 1626,
+                isChinese: false
         },
         {
                 rank: 16,
                 model: "deepseek-v4.1-flash-max",
                 company: "DeepSeek",
                 logo: "",
-                score: 1614,
+                score: 1621,
                 isChinese: true
         },
         {
                 rank: 17,
-                model: "glm-5.3-flash",
-                company: "Z.ai",
+                model: "grok-4.6-high",
+                company: "SpaceXAI",
                 logo: "",
-                score: 1607,
-                isChinese: true
+                score: 1621,
+                isChinese: false
         },
         {
                 rank: 18,
-                model: "qwen3.8-27b",
-                company: "Alibaba",
+                model: "glm-5.3-max",
+                company: "Z.ai",
                 logo: "",
-                score: 1593,
+                score: 1619,
                 isChinese: true
         },
         {
                 rank: 19,
-                model: "glm-5.2-max",
-                company: "Z.ai",
+                model: "mimo-v2.6-pro",
+                company: "Xiaomi",
                 logo: "",
-                score: 1592,
+                score: 1618,
                 isChinese: true
         },
         {
                 rank: 20,
-                model: "gemini-3.7-flash-high",
-                company: "Google",
+                model: "gpt-5.6-sol-xhigh (codex-harness)",
+                company: "OpenAI",
                 logo: "",
-                score: 1587,
+                score: 1617,
                 isChinese: false
         }
 ]

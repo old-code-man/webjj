@@ -9,7 +9,7 @@ window.rankingData = {
                 model: "minimax-h3",
                 company: "MiniMax",
                 logo: "",
-                score: 1494,
+                score: 1495,
                 isChinese: true
         },
         {
@@ -25,7 +25,7 @@ window.rankingData = {
                 model: "wan3.0",
                 company: "Alibaba",
                 logo: "",
-                score: 1479,
+                score: 1480,
                 isChinese: true
         },
         {
@@ -33,7 +33,7 @@ window.rankingData = {
                 model: "dreamina-seedance-2.5-720p",
                 company: "Bytedance",
                 logo: "",
-                score: 1475,
+                score: 1477,
                 isChinese: true
         },
         {
@@ -41,7 +41,7 @@ window.rankingData = {
                 model: "dreamina-seedance-2.0-720p",
                 company: "Bytedance",
                 logo: "",
-                score: 1474,
+                score: 1475,
                 isChinese: true
         },
         {
@@ -49,11 +49,19 @@ window.rankingData = {
                 model: "gemini-omni-flash",
                 company: "Google",
                 logo: "",
-                score: 1464,
+                score: 1465,
                 isChinese: false
         },
         {
                 rank: 7,
+                model: "hidream-o1-video-1.0",
+                company: "HiDream",
+                logo: "",
+                score: 1456,
+                isChinese: false
+        },
+        {
+                rank: 8,
                 model: "grok-imagine-video-1.5-720p",
                 company: "SpaceXAI",
                 logo: "",
@@ -61,19 +69,11 @@ window.rankingData = {
                 isChinese: false
         },
         {
-                rank: 8,
-                model: "hidream-o1-video-1.0",
-                company: "HiDream",
-                logo: "",
-                score: 1452,
-                isChinese: false
-        },
-        {
                 rank: 9,
                 model: "flux-3-video-20260811",
                 company: "Black Forest Labs",
                 logo: "",
-                score: 1450,
+                score: 1449,
                 isChinese: false
         },
         {
@@ -89,7 +89,7 @@ window.rankingData = {
                 model: "wan2.7-i2v",
                 company: "Alibaba",
                 logo: "",
-                score: 1426,
+                score: 1428,
                 isChinese: true
         },
         {
@@ -159,7 +159,7 @@ window.rankingData = {
                 model: "kling-v3-pro",
                 company: "KlingAI",
                 logo: "",
-                score: 1355,
+                score: 1354,
                 isChinese: true
         },
         {
@@ -274,7 +274,7 @@ window.rankingData = {
                 model: "vidu-q2-turbo",
                 company: "Shengshu",
                 logo: "",
-                score: 1243,
+                score: 1244,
                 isChinese: true,
                 collapsible: true,
                 children: [
